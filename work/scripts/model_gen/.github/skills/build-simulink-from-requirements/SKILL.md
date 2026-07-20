@@ -144,7 +144,39 @@ Extract structured information from the user's natural language description.
 
 ### 端口命名规则（必须遵守）
 
-所有 Inport/Outport 的名称必须使用 `{type}{Name}` 格式，**类型前缀后不能有下划线**：
+所有 Inport/Outport 的名称必须使用 `{type}{Name}` 格式，**类型前缀后不能有下划线**。
+
+**🚨 信号名归一化（AI 必须执行）：**
+如果需求中的信号名不符合 `{type}{Name}` 格式，按以下三步处理：
+
+```
+Step 1 — 清理非法前缀：
+  删除所有非类型前缀的前缀（如 xxx_、abc_、data_ 等）。
+  "xxx_u8Signal" → "u8Signal"  ✅
+  "abc_f32Temp"  → "f32Temp"   ✅
+
+Step 2 — 检测或添加类型前缀：
+  清理后若无类型前缀，根据信号含义推断最合适的类型并添加。
+  "Temperature"  → 推断为 f32 → "f32Temperature"  ✅
+  "EnableFlag"   → 推断为 b   → "bEnable"         ✅
+
+Step 3 — 精简长度 ≤ 20：
+  若名称超过 20 字符，删除冗余词（Signal/Value/Data/Info），
+  缩写方向词（LeftFront→LF、RightRear→RR）。
+  "u8LeftFrontDoorStatusSignal" → "u8LFDoorStatus"  (14字符 ✅)
+```
+
+**命名→数据类型推断表：**
+
+| 需求关键词 | 推断类型 | 前缀 |
+|-----------|---------|------|
+| "speed"/"velocity"/"position" | uint16 | `u16` |
+| "temperature"/"current"/"voltage"/"pressure" | single(f32) | `f32` |
+| "enable"/"lock"/"flag"/"status"(bool) | boolean | `b` |
+| "counter"/"index"/"mode" | uint8 | `u8` |
+| "encoder"/"tick"/"pulse" | uint16 | `u16` |
+| "error"/"deviation"/"delta" | int16 | `s16` |
+| "command"/"request" | uint8/enum | `u8`/`e` |
 
 | 数据类型 | 前缀 | 端口名示例 | 适用场景 |
 |---------|------|-----------|---------|
@@ -427,7 +459,54 @@ checkResult = model_check(modelName, scope, ["all"]);
 | 端口号不匹配 | 子系统间 I/O 数量不一致 | 检查两端的端口定义，补全缺失端口 |
 | 孤立块 | 块既无入线也无出线 | 确认该块是否多余，若需要则补全连线 |
 
-## Step 5: Verify (最终验证)
+## Step 5: Populate Internal Logic (Critical — 不要空壳)
+
+**🚨 不能只建子系统框架！每个子系统必须有完整的内部逻辑。**
+
+### 5.1 逻辑映射模板
+
+| 需求描述 | 实现方案 |
+|---------|---------|
+| "如果 X > 阈值，则 Y" | `RelationalOperator(>=)` → `Switch` |
+| "将 A 和 B 相减得误差" | `Sum(+-)` |
+| "乘以增益 K" | `Gain(K)` |
+| "A AND B" | `LogicalOperator(AND)` |
+| "A OR B" | `LogicalOperator(OR)` |
+| "积分/累积" | `DiscreteIntegrator` 或 `UnitDelay + Sum` |
+| "限幅" | `Saturation(UpperLimit, LowerLimit)` |
+| "选择/仲裁" | `Switch(Criteria="u2 ~= 0")` |
+| "上升沿" | `DetectRisePositive` |
+| "延迟" | `UnitDelay` |
+
+### 5.2 按子系统类型的最小实现要求
+
+```
+SignalAcquisition:
+  每个输入通道 → DataTypeConversion → 对应输出
+  （N路信号 → N个转换 → N路输出，与顶层Inport一一对应）
+
+功能子系统（如 SpeedControl/LimitDetection/ModeManager 等）:
+  必须包含: 条件判断（RelationalOp）+ 逻辑运算（LogicalOp）+ 选择/仲裁（Switch）
+  至少 3 个以上的逻辑块，不能只有直通。例如：
+  - 阈值判断: RelationalOperator(>=) + Constant(阈值) → Switch
+  - 条件组合: LogicalOperator(AND/OR) 合并多个条件
+  - 输出选择: Switch(Criteria="u2 ~= 0") 选择不同输出路径
+
+OutputArbitration:
+  必须包含: 优先级 Switch 级联（多路输入 → 仲裁 → 单路输出）
+  至少 3 个 Switch 级联，每级 Switch 的 u1/u2/u3 必须有信号来源
+  示例: 输入A(高优先级) → Switch(u1) vs 输入B(低优先级) → Switch(u3)
+```
+
+### 5.3 填充流程
+
+```
+每个子系统 = 至少 3 个逻辑块 + 完整连线
+逐个连线 → 每 3～5 条线 model_read → 无悬空后继续
+直到该子系统所有内部块都连接到信号为止
+```
+
+## Step 6: Verify (最终验证)
 
 After ALL model_edit calls AND all connectivity checks are complete:
 

@@ -27,6 +27,24 @@
 
 > **无下划线规则**：类型前缀后不能有下划线分隔符。格式必须为 `{type}{Name}` 如 `u16VehicleSpeed`。描述内部可以有下划线如 `u16Vehicle_Speed`，但类型前缀 `u16` 后必须紧跟大写字母。
 
+### 信号名归一化规则
+
+当需求中的信号名不符合 `{type}{Name}` 格式时，按以下步骤处理：
+
+```
+Step 1 — 清理非法前缀：删除非类型前缀的前缀
+  "xxx_u8Signal"  → "u8Signal"     ✅
+  "data_s16Speed" → "s16Speed"    ✅
+
+Step 2 — 检测或添加类型前缀：
+  无类型前缀时根据信号含义推断：
+  速度/位置 → u16，温度/电流 → f32，使能/标志 → b
+
+Step 3 — 精简长度 ≤ 20 字符：
+  删除冗余词：Signal/Value/Data/Info
+  缩写方向词：LeftFront→LF, RightRear→RR, FrontLeft→FL
+```
+
 ### 标定命名规范
 
 **格式：`cal_{数据类型前缀}{描述}`** — `cal_` 前缀后紧跟数据类型前缀，再紧跟描述，中间无多余下划线。
