@@ -1,0 +1,86 @@
+{
+  "model": {
+    "name": "EMB_LRM",
+    "purpose": "Lane Role Manager（LRM）：管理主控/备用控制链路的角色仲裁，输出角色状态与切换进行中标志；运行周期 10ms，ASIL-D",
+    "output_dir": "/Users/wangtianqi/SimulinkModels/EMB_LRM"
+  },
+  "inputs": [
+    {"name": "u8OperMode", "type": "uint8", "description": "系统运行模式（enum：0 INIT，1 NORMAL_OPERATION，2 LIMP_HOME，3 LIMP_ASIDE，4 CRAWL，5 SHUTTING_DOWN）", "unit": "-", "range": "0..5"},
+    {"name": "u8LclLaneOperMode", "type": "uint8", "description": "本控制链路运行模式（enum，编码同 OPER MODE）", "unit": "-", "range": "0..5"},
+    {"name": "u8RmtLaneRole", "type": "uint8", "description": "远控制链路当前角色（enum：0 INIT，1 MASTER，2 FALLBACK，3 SUPPORT，4 DISABLED，5 SHUTTING_DOWN）", "unit": "-", "range": "0..5"},
+    {"name": "u8LclFitnessScore", "type": "uint8", "description": "本控制链路健康度得分（62=禁用，255=无效）", "unit": "-", "range": "0..255"},
+    {"name": "u8RmtFitnessScore", "type": "uint8", "description": "远控制链路健康度得分（62=禁用，255=无效）", "unit": "-", "range": "0..255"},
+    {"name": "u8LclIlcStatus", "type": "uint8", "description": "本控制链路 ILC 状态（0x0 Failed，0x1 Normal，0x2 Initialized）", "unit": "-", "range": "0..2"},
+    {"name": "bLclIlcStatusQf", "type": "boolean", "description": "本控制链路状态信号质量（0x0 QF_Full，0x1 QF_Not Full）", "unit": "-", "range": "0..1"},
+    {"name": "u8HeartbeatLostCount", "type": "uint8", "description": "心跳丢失计数", "unit": "-", "range": "0..255"}
+  ],
+  "outputs": [
+    {"name": "bLaneSwtgInProgs", "type": "boolean", "description": "控制链路切换进行中标志（0x0 Not Progress，0x1 Progress）", "unit": "-", "range": "0..1"},
+    {"name": "bActvCtrlr", "type": "boolean", "description": "活动控制器实例标志（0x0 Not Active，0x1 Active）", "unit": "-", "range": "0..1"},
+    {"name": "u8RmtLaneSts", "type": "uint8", "description": "远控制链路状态（0 INITIALISING，1 OPERATING，2 HB_LOST，3 FAILED）", "unit": "-", "range": "0..3"},
+    {"name": "u8LaneRole", "type": "uint8", "description": "本控制链路角色状态（enum：0 UNKNOWN，1 INIT，2 MASTER，3 FALLBACK，4 SUPPORT，5 DISABLED，6 SHUTTING_DOWN）", "unit": "-", "range": "0..6"}
+  ],
+  "calibrations": [
+    {"name": "cal_u8RmtLaneFailThd", "type": "uint8", "description": "故障监控窗口阈值（周期数），对应需求 P_MLR_RMTLaneFallThd，用于 LaneStatus 状态机故障/心跳丢失判定", "unit": "cycle", "range": "0..255", "default": 20},
+    {"name": "cal_u8RoleChangeDebounceTime", "type": "uint8", "description": "角色切换防抖时间阈值（周期数），对应需求 ROLE_CHANGE_DEBOUNCE_TIME，用于 LSP 切换防抖计数", "unit": "cycle", "range": "0..255", "default": 10},
+    {"name": "cal_u16LaneInitWaitTime", "type": "uint16", "description": "初始化等待时间阈值（周期数），对应需求 LANE_INIT_WAIT_TIME，用于 MLR Init 状态退出仲裁；文档未给默认值，待确认", "unit": "cycle", "range": "0..65535", "default": 100},
+    {"name": "cal_u16TakeoverTime", "type": "uint16", "description": "接管时间阈值（周期数），对应需求 TAKEOVER_TIME，用于 Fallback/Support 向 Master 接管判定；文档未给默认值，待确认", "unit": "cycle", "range": "0..65535", "default": 50},
+    {"name": "cal_u16FallbackSupportSwapTime", "type": "uint16", "description": "Fallback 向 Support 降级时间阈值（周期数），对应需求 LANE_FALLBACK_SUPPORT_SWAP_TIME；文档未给默认值，待确认", "unit": "cycle", "range": "0..65535", "default": 50},
+    {"name": "cal_u16FailWatchWindow", "type": "uint16", "description": "故障监控窗口阈值（周期数），对应需求 FAIL_WATCH_WINDOW，用于 MLR 中 Rmt 角色 UNKNOWN 时的降级判定；文档未给默认值，待确认", "unit": "cycle", "range": "0..65535", "default": 20},
+    {"name": "cal_u16MasterFallbackSwapThd", "type": "uint16", "description": "Master 向 Fallback 切换计数阈值（周期数），需求中写死为 20，作为标定量实现", "unit": "cycle", "range": "0..65535", "default": 20}
+  ],
+  "subsystems": [
+    {
+      "name": "SignalAcquisition",
+      "role": "acquisition",
+      "description": "信号调理与类型转换",
+      "logic": "本期输入类型已与内部约定一致，8 路信号按原类型直通；后续若出现类型不一致，在此集中加入 Data Type Conversion",
+      "inputs": ["u8OperMode", "u8LclLaneOperMode", "u8RmtLaneRole", "u8LclFitnessScore", "u8RmtFitnessScore", "u8LclIlcStatus", "bLclIlcStatusQf", "u8HeartbeatLostCount"],
+      "outputs": ["u8OperModeOut", "u8LclLaneOperModeOut", "u8RmtLaneRoleOut", "u8LclFitnessScoreOut", "u8RmtFitnessScoreOut", "u8LclIlcStatusOut", "bLclIlcStatusQfOut", "u8HeartbeatLostCountOut"]
+    },
+    {
+      "name": "LRM_MLS_ManageLaneStatus",
+      "role": "function",
+      "description": "监控 LCL ILC STATUS_QF、OPER MODE 与 LCL ILC STATUS，判定控制链路健康状态 LaneStatus",
+      "logic": "已用基本模块实现：MLR_HB_Failure=(HEARTBEAT LOST COUNT != delay+1 mod 256)（Sum+UnitDelay+Relational Operator）；计数器 HbMonitorCounter/ILCStsMonitorCounter/FailureMonitorCounter 由 Unit Delay+Sum+Switch 实现，仅监控激活（INIT.MonitoringOn 或 Operating）时计数，Hb/Failure 计数器以 HB_Failure>0 为增量条件，ILC 计数器以 QF!=FULL 为增量条件；四状态机 INIT/Operating/HbLost/Failed（Unit Delay 状态寄存器+优先级切换链 Operating>Failed>HbLost）：INIT 在 OPER MODE 为 NORMAL/LIMP_HOME/LIMP_ASIDE/CRAWL 时激活监控；Operating 进入条件 QF_FULL 且 HB_Failure=0；Failed 条件 abs(int32(Hb-ILC))<=5 且 FailureCnt>=cal_u8RmtLaneFailThd；HbLost 条件 HbCnt>=cal_u8RmtLaneFailThd 且 FailureCnt>=cal_u8RmtLaneFailThd（或从 Failed 且 QF_FULL）；进入非 Operating 状态清零计数器；LaneStatusCntrInPrgs=HB_Failure>0 OR QF!=FULL",
+      "inputs": ["u8OperMode", "u8LclIlcStatus", "bLclIlcStatusQf", "u8HeartbeatLostCount"],
+      "outputs": ["u8LaneStatus", "u8PrevLaneStatus", "bLaneStatusCntrInPrgs", "u32HbMonitorCounter", "u32IlcStsMonitorCounter", "u32FailureMonitorCounter"]
+    },
+    {
+      "name": "LRM_MLR_ManageLaneRole",
+      "role": "function",
+      "description": "基于健康度得分、ILC 状态、远链路角色与控制链路状态仲裁本链路角色 LaneRole",
+      "logic": "已用基本模块实现：6 状态编码（1=INIT，2=MASTER，3=FALLBACK，4=SUPPORT，5=DISABLED，6=SHUTTING_DOWN）的 Unit Delay 状态寄存器+优先级切换链：SHUTTING_DOWN>DISABLED>退出 SHUTTING_DOWN>各运行态转移；INIT 中 InitWaitTimeCounter 自增，满足 (InitWait>=cal_u16LaneInitWaitTime 且 Lcl>Rmt) 或 Rmt==MASTER 时进入运行态（Lcl>Rmt 选 MASTER，否则 FALLBACK）；Master：ILC_FAILED 且 RmtScore!=255 且 Lcl<Rmt 立即转 SUPPORT，Rmt==MASTER 立即转 FALLBACK，条件 B（Lcl<Rmt）持续且 MasterFallbackSwapCntr>cal_u16MasterFallbackSwapThd 转 FALLBACK；Fallback：LaneStatus==FAILED 或 Rmt==DISABLED/SHUTTING_DOWN 立即转 MASTER，条件 D（Lcl>Rmt）持续且 FallbackMasterTakeoverCntr>cal_u16TakeoverTime 且 Rmt!=MASTER 转 MASTER，条件 E（Lcl<Rmt）持续且 FallbackSupportSwapCntr>cal_u16FallbackSupportSwapTime 转 SUPPORT，Rmt==UNKNOWN 且 FailureMonitorCounter>cal_u16FailWatchWindow 转 SUPPORT；Support：LaneStatus==FAILED 或 Rmt==DISABLED/SHUTTING_DOWN 立即转 MASTER，条件 G（Lcl>Rmt）持续且 SupportMasterTakeoverCntr>cal_u16TakeoverTime 且 Rmt!=MASTER 转 MASTER，!ILC_FAILED 且 Rmt==MASTER 转 FALLBACK；计数器由 Unit Delay+Sum+Switch 实现，按状态和条件使能；LaneRoleCntrInPrgs=(state==INIT)",
+      "inputs": ["u8LclFitnessScore", "u8RmtFitnessScore", "u8LclIlcStatus", "u8LclLaneOperMode", "u8RmtLaneRole", "u8LaneStatus", "u32FailureMonitorCounter"],
+      "outputs": ["u8LaneRole", "u8PrevLaneRole", "bLaneRoleCntrInPrgs", "u32InitWaitTimeCounter", "u32MasterFallbackSwapCntr", "u32FallbackMasterTakeoverCntr", "u32FallbackSupportSwapCntr", "u32SupportMasterTakeoverCntr"]
+    },
+    {
+      "name": "LRM_LSP_LaneSwitchInProgs",
+      "role": "function",
+      "description": "检测角色变化并管理切换过渡过程，输出切换进行中标志",
+      "logic": "已用基本模块实现：LaneRoleChanged=(u8LaneRole != Unit Delay 上一拍值)；IfAnyTimerNonZero=bLaneRoleCntrInPrgs OR bLaneStatusCntrInPrgs；切换计数器 LaneSwtInPrgsCntr（Unit Delay+Sum+Switch）按优先级 A>B>C 更新：A) 角色变化置 1；B) 计数>0 时递增，超过 cal_u8RoleChangeDebounceTime 后清零；C) 任一计数进行中时清零；标志 bLaneSwtgInProgs 由同一优先级链产生",
+      "inputs": ["u8LaneRole", "bLaneRoleCntrInPrgs", "bLaneStatusCntrInPrgs"],
+      "outputs": ["bLaneSwtgInProgs", "u32LaneSwtInPrgsCntr"]
+    },
+    {
+      "name": "OutputArbitration",
+      "role": "arbitration",
+      "description": "输出仲裁与合并",
+      "logic": "bLaneSwtgInProgs 由 LSP 直通；bActvCtrlr=(u8LaneRole==LN_ROLE_MASTER)（Relational Operator 判等）；u8RmtLaneSts 暂由 u8RmtLaneRole 直通占位（映射待确认）；u8LaneRole 直通",
+      "inputs": ["bLaneSwtgInProgs", "u8LaneRole", "u8RmtLaneRole"],
+      "outputs": ["bLaneSwtgInProgsOut", "bActvCtrlr", "u8RmtLaneSts", "u8LaneRoleOut"]
+    }
+  ],
+  "signal_flow": "In -> SignalAcquisition -> LRM_MLS_ManageLaneStatus / LRM_MLR_ManageLaneRole -> LRM_LSP_LaneSwitchInProgs -> OutputArbitration -> Out",
+  "assumptions": [
+    "需求文档 2.1.2.2 标题为 Subsystem1: LRM_MLR_ManageLaneStatus 但总述为 LRM_MLS_ManageLaneStatus，采用 LRM_MLS_ManageLaneStatus",
+    "LRM_LSD_LaneStatusDig 与 LRM_LRD_LaneRoleDig 两个诊断子模块在文档中无详细定义，本期不实现，待补充需求",
+    "RMT LANE STS（u8RmtLaneSts）的映射规则文档未定义，本期由 u8RmtLaneRole 直通占位",
+    "状态机用到的 LANE_INIT_WAIT_TIME、TAKEOVER_TIME、LANE_FALLBACK_SUPPORT_SWAP_TIME、FAIL_WATCH_WINDOW 未列入文档标定表，本期新增 cal_u16* 标定量（默认值待确认）；Master→Fallback 的 20 周期阈值按文档写死值实现为 cal_u16MasterFallbackSwapThd",
+    "文档中综合故障监控仅列出 HB_Failure，FailureMonitorCounter 按 HB_Failure>0 计数（与 HbMonitorCounter 相同增量），Failed 与 HbLost 由 abs(Hb-ILC)<=5 区分",
+    "MLR 中条件 B/D/E/G 文档未给出明确定义，按语义假设：条件 B=条件 E=Lcl<Rmt，条件 D=条件 G=Lcl>Rmt",
+    "MLR 从 INIT 进入 OperationalRoles 的子状态选择文档未定义，按 Lcl>Rmt 选 MASTER、否则 FALLBACK 实现",
+    "文档中 LSP 输出类型写为 uint832，按 uint32 实现",
+    "顶层端口以 {type}{Name} 规范重命名（原文档信号名为英文描述形式）"
+  ]
+}

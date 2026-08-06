@@ -1,0 +1,4 @@
+interface:
+  display_name: "Simulink 建模风格"
+  short_description: "需求解析为 spec JSON，按规范生成带描述属性的 Simulink 模型"
+  default_prompt: "使用 $simulink-modeling-style，把我的需求解析成 spec JSON，再按规范生成带描述属性的 Simulink 模型。"
