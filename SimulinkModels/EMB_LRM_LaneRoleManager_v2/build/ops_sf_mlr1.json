@@ -1,0 +1,210 @@
+{
+ "model": "EMB_LRM_LaneRoleManager_v2.slx",
+ "scope": "blk_222",
+ "layout_mode": "full",
+ "operations": [
+  {
+   "op": "configure",
+   "target": "chart:EMB_LRM_LaneRoleManager",
+   "params": {
+    "ActionLanguage": "MATLAB"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d1",
+   "params": {
+    "Name": "bShutdown",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d2",
+   "params": {
+    "Name": "bNotShutdown",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d3",
+   "params": {
+    "Name": "bLclDisabled",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d4",
+   "params": {
+    "Name": "bArbLclGtRmt",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d5",
+   "params": {
+    "Name": "bArbRmtMaster",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d6",
+   "params": {
+    "Name": "bMaster2Support",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d7",
+   "params": {
+    "Name": "bMaster2Fallback",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d8",
+   "params": {
+    "Name": "bMaster2FallbackImmediate",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d9",
+   "params": {
+    "Name": "bFallback2Master",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d10",
+   "params": {
+    "Name": "bFallback2MasterTakeover",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d11",
+   "params": {
+    "Name": "bFallback2Support",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d12",
+   "params": {
+    "Name": "bFallback2SupportUnknown",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d13",
+   "params": {
+    "Name": "bSupport2Master",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d14",
+   "params": {
+    "Name": "bSupport2MasterTakeover",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d15",
+   "params": {
+    "Name": "bSupport2Fallback",
+    "Scope": "Input",
+    "DataType": "boolean"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Data",
+   "ref": "d16",
+   "params": {
+    "Name": "u8LaneRole",
+    "Scope": "Output",
+    "DataType": "uint8"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "State",
+   "ref": "init",
+   "params": {
+    "LabelString": "MLR_STM_Init\nen: u8LaneRole = uint8(1);"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "State",
+   "ref": "dis",
+   "params": {
+    "LabelString": "MLR_STM_Disabled\nen: u8LaneRole = uint8(5);"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "State",
+   "ref": "shut",
+   "params": {
+    "LabelString": "MLR_STM_ShuttingDown\nen: u8LaneRole = uint8(6);"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "State",
+   "ref": "opr",
+   "params": {
+    "LabelString": "MLR_STM_OperationalRoles"
+   }
+  },
+  {
+   "op": "connect",
+   "target": "? -> #init"
+  }
+ ]
+}

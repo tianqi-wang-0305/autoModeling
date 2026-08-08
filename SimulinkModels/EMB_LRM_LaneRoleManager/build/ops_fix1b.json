@@ -1,0 +1,8 @@
+{
+  "model": "EMB_LRM_LaneRoleManager.slx",
+  "scope": "blk_32",
+  "layout_mode": "incremental",
+  "operations": [
+    {"op": "delete", "target": "blk_232"}
+  ]
+}

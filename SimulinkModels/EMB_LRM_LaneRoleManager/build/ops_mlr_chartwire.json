@@ -1,0 +1,27 @@
+{
+  "model": "EMB_LRM_LaneRoleManager.slx",
+  "scope": "blk_31",
+  "layout_mode": "incremental",
+  "operations": [
+    {"op": "connect", "target": "blk_164.y1 -> blk_225.u1"},
+    {"op": "connect", "target": "blk_165.y1 -> blk_225.u2"},
+    {"op": "connect", "target": "blk_166.y1 -> blk_225.u3"},
+    {"op": "connect", "target": "blk_208.y1 -> blk_225.u4"},
+    {"op": "connect", "target": "blk_169.y1 -> blk_225.u5"},
+    {"op": "connect", "target": "blk_180.y1 -> blk_225.u6"},
+    {"op": "connect", "target": "blk_218.y1 -> blk_225.u7"},
+    {"op": "connect", "target": "blk_219.y1 -> blk_225.u8"},
+    {"op": "connect", "target": "blk_181.y1 -> blk_225.u9"},
+    {"op": "connect", "target": "blk_220.y1 -> blk_225.u10"},
+    {"op": "connect", "target": "blk_221.y1 -> blk_225.u11"},
+    {"op": "connect", "target": "blk_222.y1 -> blk_225.u12"},
+    {"op": "connect", "target": "blk_181.y1 -> blk_225.u13"},
+    {"op": "connect", "target": "blk_223.y1 -> blk_225.u14"},
+    {"op": "connect", "target": "blk_224.y1 -> blk_225.u15"},
+    {"op": "connect", "target": "blk_225.y1 -> blk_141.u1"},
+    {"op": "connect", "target": "blk_225.y1 -> blk_183.u1"},
+    {"op": "connect", "target": "blk_225.y1 -> blk_184.u1"},
+    {"op": "connect", "target": "blk_225.y1 -> blk_185.u1"},
+    {"op": "connect", "target": "blk_225.y1 -> blk_186.u1"}
+  ]
+}

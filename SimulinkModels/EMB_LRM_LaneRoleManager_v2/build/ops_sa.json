@@ -1,0 +1,255 @@
+{
+ "model": "EMB_LRM_LaneRoleManager_v2.slx",
+ "scope": "blk_26",
+ "layout_mode": "full",
+ "operations": [
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8OperMode",
+   "ref": "si1"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8LclLaneOperMode",
+   "ref": "si2"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8RmtLaneRole",
+   "ref": "si3"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8LclFitnessScore",
+   "ref": "si4"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8RmtFitnessScore",
+   "ref": "si5"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8LclIlcStatus",
+   "ref": "si6"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "bLclIlcStatusQf",
+   "ref": "si7"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8HeartbeatLostCount",
+   "ref": "si8"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8OperModeOut",
+   "ref": "so1"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8LclLaneOperModeOut",
+   "ref": "so2"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8RmtLaneRoleOut",
+   "ref": "so3"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8LclFitnessScoreOut",
+   "ref": "so4"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8RmtFitnessScoreOut",
+   "ref": "so5"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8LclIlcStatusOut",
+   "ref": "so6"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "bLclIlcStatusQfOut",
+   "ref": "so7"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8HeartbeatLostCountOut",
+   "ref": "so8"
+  },
+  {
+   "op": "configure",
+   "target": "#si1",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "系统运行模式（直通）；类型 uint8；范围 0..5"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#si2",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "本控制链路运行模式（直通）；类型 uint8；范围 0..5"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#si3",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "远控制链路当前角色（直通）；类型 uint8；范围 0..6"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#si4",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "本控制链路健康度得分（直通）；类型 uint8；范围 0..255"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#si5",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "远控制链路健康度得分（直通）；类型 uint8；范围 0..255"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#si6",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "本控制链路 ILC 状态（直通）；类型 uint8；范围 0..2"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#si7",
+   "params": {
+    "OutDataTypeStr": "boolean",
+    "Description": "本控制链路 ILC 状态信号质量（直通）；类型 boolean；范围 0..1"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#si8",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "心跳丢失计数（直通）；类型 uint8；范围 0..255"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#so1",
+   "params": {
+    "Description": "系统运行模式（直通输出）"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#so2",
+   "params": {
+    "Description": "本控制链路运行模式（直通输出）"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#so3",
+   "params": {
+    "Description": "远控制链路当前角色（直通输出）"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#so4",
+   "params": {
+    "Description": "本控制链路健康度得分（直通输出）"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#so5",
+   "params": {
+    "Description": "远控制链路健康度得分（直通输出）"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#so6",
+   "params": {
+    "Description": "本控制链路 ILC 状态（直通输出）"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#so7",
+   "params": {
+    "Description": "本控制链路 ILC 状态信号质量（直通输出）"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#so8",
+   "params": {
+    "Description": "心跳丢失计数（直通输出）"
+   }
+  },
+  {
+   "op": "connect",
+   "target": "#si1.y1 -> #so1.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#si2.y1 -> #so2.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#si3.y1 -> #so3.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#si4.y1 -> #so4.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#si5.y1 -> #so5.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#si6.y1 -> #so6.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#si7.y1 -> #so7.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#si8.y1 -> #so8.u1"
+  }
+ ]
+}

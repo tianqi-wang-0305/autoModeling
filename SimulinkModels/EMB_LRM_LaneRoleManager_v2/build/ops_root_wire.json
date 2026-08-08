@@ -1,0 +1,55 @@
+{
+ "model": "EMB_LRM_LaneRoleManager_v2.slx",
+ "scope": "root",
+ "layout_mode": "incremental",
+ "operations": [
+  {
+   "op": "connect",
+   "target": "blk_1.y1 -> blk_13.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_2.y1 -> blk_13.u2"
+  },
+  {
+   "op": "connect",
+   "target": "blk_3.y1 -> blk_13.u3"
+  },
+  {
+   "op": "connect",
+   "target": "blk_4.y1 -> blk_13.u4"
+  },
+  {
+   "op": "connect",
+   "target": "blk_5.y1 -> blk_13.u5"
+  },
+  {
+   "op": "connect",
+   "target": "blk_6.y1 -> blk_13.u6"
+  },
+  {
+   "op": "connect",
+   "target": "blk_7.y1 -> blk_13.u7"
+  },
+  {
+   "op": "connect",
+   "target": "blk_8.y1 -> blk_13.u8"
+  },
+  {
+   "op": "connect",
+   "target": "blk_13.y1 -> blk_9.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_13.y2 -> blk_10.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_13.y3 -> blk_11.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_13.y4 -> blk_12.u1"
+  }
+ ]
+}

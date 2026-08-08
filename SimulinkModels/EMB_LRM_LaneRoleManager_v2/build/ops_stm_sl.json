@@ -1,0 +1,1158 @@
+{
+ "model": "EMB_LRM_LaneRoleManager_v2.slx",
+ "scope": "blk_57",
+ "layout_mode": "full",
+ "operations": [
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8OperMode",
+   "ref": "yi1"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8LclIlcStatus",
+   "ref": "yi2"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "bLclIlcStatusQf",
+   "ref": "yi3"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8HbFailure",
+   "ref": "yi4"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8LaneStatus",
+   "ref": "yo1"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "bLaneStatusCntrInPrgs",
+   "ref": "yo2"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u32HbMonitorCounter",
+   "ref": "yo3"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u32IlcStsMonitorCounter",
+   "ref": "yo4"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u32FailureMonitorCounter",
+   "ref": "yo5"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "cal_u8RmtLaneFallThd",
+   "ref": "calthd"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "cal_u8CounterDiffThd",
+   "ref": "calthddiff"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_OpMode1",
+   "ref": "c1"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_OpMode2",
+   "ref": "c2"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_OpMode3",
+   "ref": "c3"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_OpMode4",
+   "ref": "c4"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_ZeroU8",
+   "ref": "c0u8"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_OneU8",
+   "ref": "c1u8"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_OneU32",
+   "ref": "c1u32"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_ZeroU32",
+   "ref": "c0u32"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_OpMode1",
+   "ref": "rop1"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_OpMode2",
+   "ref": "rop2"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_OpMode3",
+   "ref": "rop3"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_OpMode4",
+   "ref": "rop4"
+  },
+  {
+   "op": "add_block",
+   "type": "Logic",
+   "name": "Logic_OrOpMode",
+   "ref": "orop"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_IlcStsFailed",
+   "ref": "rilcfail"
+  },
+  {
+   "op": "add_block",
+   "type": "Logic",
+   "name": "Logic_OrIlcFault",
+   "ref": "orilc"
+  },
+  {
+   "op": "add_block",
+   "type": "Logic",
+   "name": "Logic_NotIlcFull",
+   "ref": "notilcfull"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_HbFault",
+   "ref": "rhbfail"
+  },
+  {
+   "op": "add_block",
+   "type": "Logic",
+   "name": "Logic_NotHbOk",
+   "ref": "nothbok"
+  },
+  {
+   "op": "add_block",
+   "type": "Logic",
+   "name": "Logic_AndHlthOk",
+   "ref": "andhlth"
+  },
+  {
+   "op": "add_block",
+   "type": "Chart",
+   "name": "MLS_STM_Chart",
+   "ref": "chart"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_StsIs0",
+   "ref": "rsi0"
+  },
+  {
+   "op": "add_block",
+   "type": "Logic",
+   "name": "Logic_AndMonOn",
+   "ref": "andmon"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_StsIs1",
+   "ref": "rsi1"
+  },
+  {
+   "op": "add_block",
+   "type": "Logic",
+   "name": "Logic_OrInMonOp",
+   "ref": "orinmon"
+  },
+  {
+   "op": "add_block",
+   "type": "Sum",
+   "name": "Sum_HbPlus1",
+   "ref": "sumhb"
+  },
+  {
+   "op": "add_block",
+   "type": "Switch",
+   "name": "Switch_HbFault",
+   "ref": "swhb1"
+  },
+  {
+   "op": "add_block",
+   "type": "Switch",
+   "name": "Switch_HbGate",
+   "ref": "swhb2"
+  },
+  {
+   "op": "add_block",
+   "type": "UnitDelay",
+   "name": "UnitDelay_HbMon",
+   "ref": "udhb"
+  },
+  {
+   "op": "add_block",
+   "type": "Sum",
+   "name": "Sum_IlcPlus1",
+   "ref": "sumilc"
+  },
+  {
+   "op": "add_block",
+   "type": "Switch",
+   "name": "Switch_IlcFault",
+   "ref": "swilc1"
+  },
+  {
+   "op": "add_block",
+   "type": "Switch",
+   "name": "Switch_IlcGate",
+   "ref": "swilc2"
+  },
+  {
+   "op": "add_block",
+   "type": "UnitDelay",
+   "name": "UnitDelay_IlcMon",
+   "ref": "udilc"
+  },
+  {
+   "op": "add_block",
+   "type": "Sum",
+   "name": "Sum_FailPlus1",
+   "ref": "sumfail"
+  },
+  {
+   "op": "add_block",
+   "type": "Switch",
+   "name": "Switch_FailFault",
+   "ref": "swfail1"
+  },
+  {
+   "op": "add_block",
+   "type": "Switch",
+   "name": "Switch_FailGate",
+   "ref": "swfail2"
+  },
+  {
+   "op": "add_block",
+   "type": "UnitDelay",
+   "name": "UnitDelay_FailMon",
+   "ref": "udfail"
+  },
+  {
+   "op": "add_block",
+   "type": "DataTypeConversion",
+   "name": "Dtc_ThdToU32",
+   "ref": "dthdu32"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_HbThd",
+   "ref": "rhbthd"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_FailThd",
+   "ref": "rfailthd"
+  },
+  {
+   "op": "add_block",
+   "type": "Logic",
+   "name": "Logic_AndHbLost",
+   "ref": "andhblost"
+  },
+  {
+   "op": "add_block",
+   "type": "DataTypeConversion",
+   "name": "Dtc_HbToS32",
+   "ref": "dhbs32"
+  },
+  {
+   "op": "add_block",
+   "type": "DataTypeConversion",
+   "name": "Dtc_IlcToS32",
+   "ref": "dilcs32"
+  },
+  {
+   "op": "add_block",
+   "type": "Sum",
+   "name": "Sum_Diff",
+   "ref": "sumdiff"
+  },
+  {
+   "op": "add_block",
+   "type": "Abs",
+   "name": "Abs_Diff",
+   "ref": "absdiff"
+  },
+  {
+   "op": "add_block",
+   "type": "DataTypeConversion",
+   "name": "Dtc_DiffThdToS32",
+   "ref": "ddiffs32"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_DiffOk",
+   "ref": "rdiffok"
+  },
+  {
+   "op": "add_block",
+   "type": "Logic",
+   "name": "Logic_AndFailed",
+   "ref": "andfailed"
+  },
+  {
+   "op": "add_block",
+   "type": "Logic",
+   "name": "Logic_OrCntrInPrgs",
+   "ref": "orcnt"
+  },
+  {
+   "op": "configure",
+   "target": "#yi1",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "系统运行模式；类型 uint8；范围 0..5"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#yi2",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "本控制链路 ILC 状态；类型 uint8；范围 0..2"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#yi3",
+   "params": {
+    "OutDataTypeStr": "boolean",
+    "Description": "本控制链路 ILC 状态信号质量（1=异常）；类型 boolean"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#yi4",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "心跳丢失故障判断（来自 MLS_HB_Failure）；类型 uint8；范围 0..1"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#yo1",
+   "params": {
+    "Description": "控制链路健康状态；类型 uint8；范围 0..3"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#yo2",
+   "params": {
+    "Description": "状态切换计数器进行中标志；类型 boolean"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#yo3",
+   "params": {
+    "Description": "心跳监控计数器；类型 uint32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#yo4",
+   "params": {
+    "Description": "ILC 状态监控计数器；类型 uint32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#yo5",
+   "params": {
+    "Description": "故障监控计数器；类型 uint32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#calthd",
+   "params": {
+    "Value": "20",
+    "OutDataTypeStr": "uint8",
+    "Description": "cal_u8RmtLaneFallThd；故障监控窗口阈值（周期数）；uint8；1..255；默认 20"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#calthddiff",
+   "params": {
+    "Value": "5",
+    "OutDataTypeStr": "uint8",
+    "Description": "cal_u8CounterDiffThd；Hb 与 ILC 监控计数器差值阈值；uint8；1..255；默认 5"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#c1",
+   "params": {
+    "Value": "1",
+    "OutDataTypeStr": "uint8",
+    "Description": "OPMODE_NORMAL_OPERATION=1；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#c2",
+   "params": {
+    "Value": "2",
+    "OutDataTypeStr": "uint8",
+    "Description": "OPMODE_LIMP_HOME=2；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#c3",
+   "params": {
+    "Value": "3",
+    "OutDataTypeStr": "uint8",
+    "Description": "OPMODE_LIMP_ASIDE=3；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#c4",
+   "params": {
+    "Value": "4",
+    "OutDataTypeStr": "uint8",
+    "Description": "OPMODE_CRAWL=4；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#c0u8",
+   "params": {
+    "Value": "0",
+    "OutDataTypeStr": "uint8",
+    "Description": "零常量；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#c1u8",
+   "params": {
+    "Value": "1",
+    "OutDataTypeStr": "uint8",
+    "Description": "常量 1（LANE_STS_OPERATING=1）；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#c1u32",
+   "params": {
+    "Value": "1",
+    "OutDataTypeStr": "uint32",
+    "Description": "计数器步长 1；uint32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#c0u32",
+   "params": {
+    "Value": "0",
+    "OutDataTypeStr": "uint32",
+    "Description": "计数器清零常量；uint32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rop1",
+   "params": {
+    "Operator": "==",
+    "Description": "运行模式==NORMAL_OPERATION"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rop2",
+   "params": {
+    "Operator": "==",
+    "Description": "运行模式==LIMP_HOME"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rop3",
+   "params": {
+    "Operator": "==",
+    "Description": "运行模式==LIMP_ASIDE"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rop4",
+   "params": {
+    "Operator": "==",
+    "Description": "运行模式==CRAWL"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#orop",
+   "params": {
+    "Operator": "OR",
+    "Inputs": "4",
+    "Description": "监控激活条件：运行模式属于 {NORMAL,LIMP_HOME,LIMP_ASIDE,CRAWL}",
+    "IconShape": "rectangular"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rilcfail",
+   "params": {
+    "Operator": "==",
+    "Description": "ILC 状态==Failed"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#orilc",
+   "params": {
+    "Operator": "OR",
+    "Inputs": "2",
+    "Description": "ILC 异常：质量异常(1) 或 状态==Failed",
+    "IconShape": "rectangular"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#notilcfull",
+   "params": {
+    "Operator": "NOT",
+    "Inputs": "1",
+    "Description": "ILC 正常（质量好且状态非 Failed）",
+    "IconShape": "rectangular"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rhbfail",
+   "params": {
+    "Operator": ">",
+    "Description": "心跳故障：u8HbFailure > 0"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#nothbok",
+   "params": {
+    "Operator": "NOT",
+    "Inputs": "1",
+    "Description": "心跳正常",
+    "IconShape": "rectangular"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#andhlth",
+   "params": {
+    "Operator": "AND",
+    "Inputs": "2",
+    "Description": "健康条件：心跳正常且 ILC 正常",
+    "IconShape": "rectangular"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#chart",
+   "params": {
+    "Description": "MLS_STM_StateMachine 布尔门控 Stateflow：输入全为 boolean 条件，输出 u8LaneStatus(0..3) 与 bMonActive；状态 INIT.MonitoringOff/On、Operating、HbLost、Failed，优先级 Operating>Failed>HbLost"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rsi0",
+   "params": {
+    "Operator": "==",
+    "Description": "LaneStatus==INITIALISING(0)"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#andmon",
+   "params": {
+    "Operator": "AND",
+    "Inputs": "2",
+    "Description": "INIT.MonitoringOn 状态",
+    "IconShape": "rectangular"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rsi1",
+   "params": {
+    "Operator": "==",
+    "Description": "LaneStatus==OPERATING(1)"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#orinmon",
+   "params": {
+    "Operator": "OR",
+    "Inputs": "2",
+    "Description": "监控计数激活状态：MonitoringOn 或 Operating",
+    "IconShape": "rectangular"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#sumhb",
+   "params": {
+    "Inputs": "++",
+    "Description": "Hb 计数器 +1"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#swhb1",
+   "params": {
+    "Description": "Hb 故障时计数+1，否则清零"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#swhb2",
+   "params": {
+    "Description": "监控激活时保持计数，否则清零"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#udhb",
+   "params": {
+    "InitialCondition": "0",
+    "Description": "Hb 监控计数器状态；uint32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#sumilc",
+   "params": {
+    "Inputs": "++",
+    "Description": "ILC 计数器 +1"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#swilc1",
+   "params": {
+    "Description": "ILC 故障时计数+1，否则清零"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#swilc2",
+   "params": {
+    "Description": "监控激活时保持计数，否则清零"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#udilc",
+   "params": {
+    "InitialCondition": "0",
+    "Description": "ILC 监控计数器状态；uint32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#sumfail",
+   "params": {
+    "Inputs": "++",
+    "Description": "故障计数器 +1"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#swfail1",
+   "params": {
+    "Description": "心跳故障时计数+1，否则清零"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#swfail2",
+   "params": {
+    "Description": "监控激活时保持计数，否则清零"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#udfail",
+   "params": {
+    "InitialCondition": "0",
+    "Description": "故障监控计数器状态；uint32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#dthdu32",
+   "params": {
+    "OutDataTypeStr": "uint32",
+    "Description": "窗口阈值转 uint32 供计数器比较"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rhbthd",
+   "params": {
+    "Operator": ">=",
+    "Description": "Hb 计数器 >= 窗口阈值"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rfailthd",
+   "params": {
+    "Operator": ">=",
+    "Description": "故障计数器 >= 窗口阈值"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#andhblost",
+   "params": {
+    "Operator": "AND",
+    "Inputs": "2",
+    "Description": "HbLost 进入条件",
+    "IconShape": "rectangular"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#dhbs32",
+   "params": {
+    "OutDataTypeStr": "int32",
+    "Description": "Hb 计数器转 int32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#dilcs32",
+   "params": {
+    "OutDataTypeStr": "int32",
+    "Description": "ILC 计数器转 int32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#sumdiff",
+   "params": {
+    "Inputs": "+-",
+    "Description": "Hb-ILC 差值"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#absdiff",
+   "params": {
+    "Description": "计数器差值绝对值"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#ddiffs32",
+   "params": {
+    "OutDataTypeStr": "int32",
+    "Description": "差值阈值转 int32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rdiffok",
+   "params": {
+    "Operator": "<=",
+    "Description": "abs(Hb-ILC) <= 差值阈值"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#andfailed",
+   "params": {
+    "Operator": "AND",
+    "Inputs": "2",
+    "Description": "Failed 进入条件",
+    "IconShape": "rectangular"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#orcnt",
+   "params": {
+    "Operator": "OR",
+    "Inputs": "2",
+    "Description": "LaneStatusCntrInPrgs：心跳故障或 ILC 异常",
+    "IconShape": "rectangular"
+   }
+  },
+  {
+   "op": "connect",
+   "target": "#yi1.y1 -> #rop1.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#yi1.y1 -> #rop2.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#yi1.y1 -> #rop3.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#yi1.y1 -> #rop4.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#c1.y1 -> #rop1.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#c2.y1 -> #rop2.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#c3.y1 -> #rop3.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#c4.y1 -> #rop4.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#rop1.y1 -> #orop.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rop2.y1 -> #orop.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#rop3.y1 -> #orop.u3"
+  },
+  {
+   "op": "connect",
+   "target": "#rop4.y1 -> #orop.u4"
+  },
+  {
+   "op": "connect",
+   "target": "#yi2.y1 -> #rilcfail.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#c0u8.y1 -> #rilcfail.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#yi3.y1 -> #orilc.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rilcfail.y1 -> #orilc.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#orilc.y1 -> #notilcfull.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#yi4.y1 -> #rhbfail.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#c0u8.y1 -> #rhbfail.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#rhbfail.y1 -> #nothbok.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#nothbok.y1 -> #andhlth.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#notilcfull.y1 -> #andhlth.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#orilc.y1 -> #orcnt.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rhbfail.y1 -> #orcnt.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#orcnt.y1 -> #yo2.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rsi0.y1 -> #andmon.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#c0u8.y1 -> #rsi0.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#c1u8.y1 -> #rsi1.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#andmon.y1 -> #orinmon.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rsi1.y1 -> #orinmon.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#orinmon.y1 -> #swhb2.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#orinmon.y1 -> #swilc2.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#orinmon.y1 -> #swfail2.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#udhb.y1 -> #sumhb.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#c1u32.y1 -> #sumhb.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#sumhb.y1 -> #swhb1.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rhbfail.y1 -> #swhb1.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#c0u32.y1 -> #swhb1.u3"
+  },
+  {
+   "op": "connect",
+   "target": "#swhb1.y1 -> #swhb2.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#c0u32.y1 -> #swhb2.u3"
+  },
+  {
+   "op": "connect",
+   "target": "#swhb2.y1 -> #udhb.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#udhb.y1 -> #yo3.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#udilc.y1 -> #sumilc.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#c1u32.y1 -> #sumilc.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#sumilc.y1 -> #swilc1.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#orilc.y1 -> #swilc1.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#c0u32.y1 -> #swilc1.u3"
+  },
+  {
+   "op": "connect",
+   "target": "#swilc1.y1 -> #swilc2.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#c0u32.y1 -> #swilc2.u3"
+  },
+  {
+   "op": "connect",
+   "target": "#swilc2.y1 -> #udilc.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#udilc.y1 -> #yo4.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#udfail.y1 -> #sumfail.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#c1u32.y1 -> #sumfail.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#sumfail.y1 -> #swfail1.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rhbfail.y1 -> #swfail1.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#c0u32.y1 -> #swfail1.u3"
+  },
+  {
+   "op": "connect",
+   "target": "#swfail1.y1 -> #swfail2.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#c0u32.y1 -> #swfail2.u3"
+  },
+  {
+   "op": "connect",
+   "target": "#swfail2.y1 -> #udfail.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#udfail.y1 -> #yo5.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#calthd.y1 -> #dthdu32.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#dthdu32.y1 -> #rhbthd.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#udhb.y1 -> #rhbthd.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#dthdu32.y1 -> #rfailthd.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#udfail.y1 -> #rfailthd.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rhbthd.y1 -> #andhblost.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rfailthd.y1 -> #andhblost.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#udhb.y1 -> #dhbs32.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#udilc.y1 -> #dilcs32.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#dhbs32.y1 -> #sumdiff.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#dilcs32.y1 -> #sumdiff.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#sumdiff.y1 -> #absdiff.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#absdiff.y1 -> #rdiffok.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#calthddiff.y1 -> #ddiffs32.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#ddiffs32.y1 -> #rdiffok.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#rdiffok.y1 -> #andfailed.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rfailthd.y1 -> #andfailed.u2"
+  }
+ ]
+}

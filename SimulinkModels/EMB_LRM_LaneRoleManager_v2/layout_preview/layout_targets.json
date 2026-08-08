@@ -1,0 +1,1754 @@
+{
+ "root": {
+  "u8OperMode": [
+   60,
+   580,
+   90,
+   594
+  ],
+  "u8LclLaneOperMode": [
+   60,
+   476,
+   90,
+   490
+  ],
+  "u8RmtLaneRole": [
+   60,
+   788,
+   90,
+   802
+  ],
+  "u8LclFitnessScore": [
+   60,
+   268,
+   90,
+   282
+  ],
+  "u8RmtFitnessScore": [
+   60,
+   684,
+   90,
+   698
+  ],
+  "u8LclIlcStatus": [
+   60,
+   372,
+   90,
+   386
+  ],
+  "bLclIlcStatusQf": [
+   60,
+   60,
+   90,
+   74
+  ],
+  "u8HeartbeatLostCount": [
+   60,
+   164,
+   90,
+   178
+  ],
+  "MainSubsystem": [
+   240,
+   60,
+   435,
+   261
+  ],
+  "bLaneSwtgInProgs": [
+   585,
+   164,
+   615,
+   178
+  ],
+  "bActvCtrlr": [
+   585,
+   60,
+   615,
+   74
+  ],
+  "u8RmtLaneSts": [
+   585,
+   372,
+   615,
+   386
+  ],
+  "u8LaneRole": [
+   585,
+   268,
+   615,
+   282
+  ]
+ },
+ "main": {
+  "MainSubsystem": [
+   60,
+   351,
+   255,
+   552
+  ],
+  "u8OperMode": [
+   60,
+   1806,
+   90,
+   1820
+  ],
+  "u8LclLaneOperMode": [
+   60,
+   1515,
+   90,
+   1529
+  ],
+  "u8RmtLaneRole": [
+   60,
+   2388,
+   90,
+   2402
+  ],
+  "u8LclFitnessScore": [
+   60,
+   933,
+   90,
+   947
+  ],
+  "u8RmtFitnessScore": [
+   60,
+   2097,
+   90,
+   2111
+  ],
+  "u8LclIlcStatus": [
+   60,
+   1224,
+   90,
+   1238
+  ],
+  "bLclIlcStatusQf": [
+   60,
+   60,
+   90,
+   74
+  ],
+  "u8HeartbeatLostCount": [
+   60,
+   642,
+   90,
+   656
+  ],
+  "LRM_LSP_LaneSwitchInProgs": [
+   1575,
+   60,
+   1790,
+   126
+  ],
+  "LRM_MLR_ManageLaneRole": [
+   1155,
+   60,
+   1425,
+   234
+  ],
+  "LRM_MLS_ManageLaneStatus": [
+   780,
+   60,
+   1005,
+   180
+  ],
+  "OutputArbitration": [
+   1940,
+   60,
+   2125,
+   153
+  ],
+  "SignalAcquisition": [
+   405,
+   60,
+   630,
+   261
+  ],
+  "Term_FbMastTk": [
+   1575,
+   216,
+   1595,
+   236
+  ],
+  "Term_FbSupSw": [
+   1575,
+   372,
+   1595,
+   392
+  ],
+  "Term_HbMon": [
+   1155,
+   324,
+   1175,
+   344
+  ],
+  "Term_IlcMon": [
+   1155,
+   588,
+   1175,
+   608
+  ],
+  "Term_InitWait": [
+   1575,
+   528,
+   1595,
+   548
+  ],
+  "Term_LspCntr": [
+   1940,
+   243,
+   1960,
+   263
+  ],
+  "Term_MastFbSw": [
+   1575,
+   684,
+   1595,
+   704
+  ],
+  "Term_SupMastTk": [
+   1575,
+   840,
+   1595,
+   860
+  ],
+  "bLaneSwtgInProgs": [
+   2275,
+   164,
+   2305,
+   178
+  ],
+  "bActvCtrlr": [
+   2275,
+   60,
+   2305,
+   74
+  ],
+  "u8RmtLaneSts": [
+   2275,
+   372,
+   2305,
+   386
+  ],
+  "u8LaneRole": [
+   2275,
+   268,
+   2305,
+   282
+  ]
+ },
+ "sa": {
+  "SignalAcquisition": [
+   60,
+   351,
+   285,
+   552
+  ],
+  "u8OperMode": [
+   60,
+   1806,
+   90,
+   1820
+  ],
+  "u8LclLaneOperMode": [
+   60,
+   1515,
+   90,
+   1529
+  ],
+  "u8RmtLaneRole": [
+   60,
+   2388,
+   90,
+   2402
+  ],
+  "u8LclFitnessScore": [
+   60,
+   933,
+   90,
+   947
+  ],
+  "u8RmtFitnessScore": [
+   60,
+   2097,
+   90,
+   2111
+  ],
+  "u8LclIlcStatus": [
+   60,
+   1224,
+   90,
+   1238
+  ],
+  "bLclIlcStatusQf": [
+   60,
+   60,
+   90,
+   74
+  ],
+  "u8HeartbeatLostCount": [
+   60,
+   642,
+   90,
+   656
+  ],
+  "u8OperModeOut": [
+   435,
+   580,
+   465,
+   594
+  ],
+  "u8LclLaneOperModeOut": [
+   435,
+   476,
+   465,
+   490
+  ],
+  "u8RmtLaneRoleOut": [
+   435,
+   788,
+   465,
+   802
+  ],
+  "u8LclFitnessScoreOut": [
+   435,
+   268,
+   465,
+   282
+  ],
+  "u8RmtFitnessScoreOut": [
+   435,
+   684,
+   465,
+   698
+  ],
+  "u8LclIlcStatusOut": [
+   435,
+   372,
+   465,
+   386
+  ],
+  "bLclIlcStatusQfOut": [
+   435,
+   60,
+   465,
+   74
+  ],
+  "u8HeartbeatLostCountOut": [
+   435,
+   164,
+   465,
+   178
+  ]
+ },
+ "mls": {
+  "LRM_MLS_ManageLaneStatus": [
+   60,
+   270,
+   285,
+   390
+  ],
+  "u8OperMode": [
+   60,
+   900,
+   90,
+   914
+  ],
+  "u8LclIlcStatus": [
+   60,
+   690,
+   90,
+   704
+  ],
+  "bLclIlcStatusQf": [
+   60,
+   60,
+   90,
+   74
+  ],
+  "u8HeartbeatLostCount": [
+   60,
+   480,
+   90,
+   494
+  ],
+  "MLS_HB_Failure": [
+   435,
+   60,
+   600,
+   110
+  ],
+  "MLS_STM_StateMachine": [
+   750,
+   60,
+   945,
+   180
+  ],
+  "u8LaneStatus": [
+   1095,
+   476,
+   1125,
+   490
+  ],
+  "bLaneStatusCntrInPrgs": [
+   1095,
+   60,
+   1125,
+   74
+  ],
+  "u32HbMonitorCounter": [
+   1095,
+   268,
+   1125,
+   282
+  ],
+  "u32IlcStsMonitorCounter": [
+   1095,
+   372,
+   1125,
+   386
+  ],
+  "u32FailureMonitorCounter": [
+   1095,
+   164,
+   1125,
+   178
+  ]
+ },
+ "hbf": {
+  "MLS_HB_Failure": [
+   60,
+   60,
+   225,
+   110
+  ],
+  "u8HeartbeatLostCount": [
+   60,
+   200,
+   90,
+   214
+  ],
+  "C_Max255": [
+   560,
+   60,
+   590,
+   90
+  ],
+  "C_One": [
+   560,
+   182,
+   590,
+   212
+  ],
+  "C_Zero": [
+   375,
+   60,
+   405,
+   90
+  ],
+  "Dtc_ToU8": [
+   1280,
+   60,
+   1355,
+   94
+  ],
+  "Logic_AndWrap": [
+   740,
+   60,
+   770,
+   95
+  ],
+  "Logic_NotFailure": [
+   1100,
+   60,
+   1130,
+   92
+  ],
+  "Logic_OrHealthy": [
+   920,
+   60,
+   950,
+   95
+  ],
+  "Relop_CurrIs0": [
+   375,
+   184,
+   405,
+   215
+  ],
+  "Relop_IsIncrement": [
+   740,
+   185,
+   770,
+   216
+  ],
+  "Relop_PrevIs255": [
+   560,
+   304,
+   590,
+   335
+  ],
+  "Sum_PrevPlus1": [
+   560,
+   426,
+   590,
+   458
+  ],
+  "UnitDelay_PrevCount": [
+   375,
+   308,
+   410,
+   342
+  ],
+  "u8HbFailure": [
+   1505,
+   60,
+   1535,
+   74
+  ]
+ },
+ "stm": {
+  "MLS_STM_StateMachine": [
+   60,
+   270,
+   255,
+   390
+  ],
+  "u8OperMode": [
+   60,
+   900,
+   90,
+   914
+  ],
+  "u8LclIlcStatus": [
+   60,
+   690,
+   90,
+   704
+  ],
+  "bLclIlcStatusQf": [
+   60,
+   60,
+   90,
+   74
+  ],
+  "u8HbFailure": [
+   60,
+   480,
+   90,
+   494
+  ],
+  "Abs_Diff": [
+   1170,
+   60,
+   1200,
+   90
+  ],
+  "C_OneU32": [
+   1170,
+   226,
+   1200,
+   256
+  ],
+  "C_OneU8": [
+   1170,
+   392,
+   1200,
+   422
+  ],
+  "C_OpMode1": [
+   405,
+   60,
+   435,
+   90
+  ],
+  "C_OpMode2": [
+   405,
+   184,
+   435,
+   214
+  ],
+  "C_OpMode3": [
+   405,
+   308,
+   435,
+   338
+  ],
+  "C_OpMode4": [
+   405,
+   432,
+   435,
+   462
+  ],
+  "C_ZeroU32": [
+   1170,
+   558,
+   1200,
+   588
+  ],
+  "C_ZeroU8": [
+   405,
+   556,
+   435,
+   586
+  ],
+  "Dtc_DiffThdToS32": [
+   405,
+   928,
+   480,
+   962
+  ],
+  "Dtc_HbToS32": [
+   1170,
+   724,
+   1245,
+   758
+  ],
+  "Dtc_IlcToS32": [
+   1170,
+   890,
+   1245,
+   924
+  ],
+  "Dtc_ThdToU32": [
+   405,
+   1052,
+   480,
+   1086
+  ],
+  "Logic_AndFailed": [
+   1170,
+   1056,
+   1200,
+   1091
+  ],
+  "Logic_AndHbLost": [
+   1170,
+   1222,
+   1200,
+   1257
+  ],
+  "Logic_AndHlthOk": [
+   990,
+   60,
+   1020,
+   95
+  ],
+  "Logic_AndMonOn": [
+   1170,
+   1388,
+   1200,
+   1423
+  ],
+  "Logic_NotHbOk": [
+   630,
+   60,
+   660,
+   92
+  ],
+  "Logic_NotIlcFull": [
+   810,
+   60,
+   840,
+   92
+  ],
+  "Logic_OrCntrInPrgs": [
+   810,
+   185,
+   840,
+   220
+  ],
+  "Logic_OrIlcFault": [
+   630,
+   185,
+   660,
+   220
+  ],
+  "Logic_OrInMonOp": [
+   1170,
+   1554,
+   1200,
+   1589
+  ],
+  "Logic_OrOpMode": [
+   630,
+   310,
+   660,
+   344
+  ],
+  "MLS_STM_Chart": [
+   1170,
+   1720,
+   1220,
+   1796
+  ],
+  "Relop_DiffOk": [
+   1170,
+   4044,
+   1200,
+   4075
+  ],
+  "Relop_FailThd": [
+   1170,
+   4210,
+   1200,
+   4241
+  ],
+  "Relop_HbFault": [
+   405,
+   1176,
+   435,
+   1207
+  ],
+  "Relop_HbThd": [
+   1170,
+   4376,
+   1200,
+   4407
+  ],
+  "Relop_IlcStsFailed": [
+   405,
+   1300,
+   435,
+   1331
+  ],
+  "Relop_OpMode1": [
+   405,
+   1424,
+   435,
+   1455
+  ],
+  "Relop_OpMode2": [
+   405,
+   1548,
+   435,
+   1579
+  ],
+  "Relop_OpMode3": [
+   405,
+   1672,
+   435,
+   1703
+  ],
+  "Relop_OpMode4": [
+   405,
+   1796,
+   435,
+   1827
+  ],
+  "Relop_StsIs0": [
+   1170,
+   3878,
+   1200,
+   3909
+  ],
+  "Relop_StsIs1": [
+   1170,
+   1886,
+   1200,
+   1917
+  ],
+  "Sum_Diff": [
+   1170,
+   2052,
+   1200,
+   2083
+  ],
+  "Sum_FailPlus1": [
+   1170,
+   2218,
+   1200,
+   2250
+  ],
+  "Sum_HbPlus1": [
+   1170,
+   2384,
+   1200,
+   2416
+  ],
+  "Sum_IlcPlus1": [
+   1170,
+   2550,
+   1200,
+   2582
+  ],
+  "Switch_FailFault": [
+   1170,
+   4542,
+   1220,
+   4582
+  ],
+  "Switch_FailGate": [
+   1170,
+   2716,
+   1220,
+   2756
+  ],
+  "Switch_HbFault": [
+   1170,
+   4708,
+   1220,
+   4748
+  ],
+  "Switch_HbGate": [
+   1170,
+   2882,
+   1220,
+   2922
+  ],
+  "Switch_IlcFault": [
+   1170,
+   3712,
+   1220,
+   3752
+  ],
+  "Switch_IlcGate": [
+   1170,
+   3048,
+   1220,
+   3088
+  ],
+  "UnitDelay_FailMon": [
+   1170,
+   3214,
+   1205,
+   3248
+  ],
+  "UnitDelay_HbMon": [
+   1170,
+   3380,
+   1205,
+   3414
+  ],
+  "UnitDelay_IlcMon": [
+   1170,
+   3546,
+   1205,
+   3580
+  ],
+  "cal_u8CounterDiffThd": [
+   405,
+   680,
+   435,
+   710
+  ],
+  "cal_u8RmtLaneFallThd": [
+   405,
+   804,
+   435,
+   834
+  ],
+  "u8LaneStatus": [
+   1395,
+   164,
+   1425,
+   178
+  ],
+  "bLaneStatusCntrInPrgs": [
+   1395,
+   60,
+   1425,
+   74
+  ],
+  "u32HbMonitorCounter": [
+   1395,
+   372,
+   1425,
+   386
+  ],
+  "u32IlcStsMonitorCounter": [
+   1395,
+   476,
+   1425,
+   490
+  ],
+  "u32FailureMonitorCounter": [
+   1395,
+   268,
+   1425,
+   282
+  ]
+ },
+ "mlr": {
+  "LRM_MLR_ManageLaneRole": [
+   60,
+   60,
+   330,
+   234
+  ],
+  "u8LclFitnessScore": [
+   60,
+   852,
+   90,
+   866
+  ],
+  "u8RmtFitnessScore": [
+   60,
+   1644,
+   90,
+   1658
+  ],
+  "u8LclIlcStatus": [
+   60,
+   1116,
+   90,
+   1130
+  ],
+  "u8LclLaneOperMode": [
+   60,
+   1380,
+   90,
+   1394
+  ],
+  "u8RmtLaneRole": [
+   60,
+   1908,
+   90,
+   1922
+  ],
+  "u8LaneStatus": [
+   60,
+   588,
+   90,
+   602
+  ],
+  "u32FailureMonitorCounter": [
+   60,
+   324,
+   90,
+   338
+  ],
+  "C_FiveU8": [
+   480,
+   60,
+   510,
+   90
+  ],
+  "C_FourU8": [
+   1065,
+   60,
+   1095,
+   90
+  ],
+  "C_Max255U8": [
+   480,
+   184,
+   510,
+   214
+  ],
+  "C_OneU32": [
+   1065,
+   360,
+   1095,
+   390
+  ],
+  "C_OneU8": [
+   1065,
+   660,
+   1095,
+   690
+  ],
+  "C_SixTwoU8": [
+   480,
+   308,
+   510,
+   338
+  ],
+  "C_SixU8": [
+   480,
+   432,
+   510,
+   462
+  ],
+  "C_ThreeU8": [
+   480,
+   556,
+   510,
+   586
+  ],
+  "C_TwoU8": [
+   480,
+   680,
+   510,
+   710
+  ],
+  "C_ZeroU32": [
+   1065,
+   960,
+   1095,
+   990
+  ],
+  "C_ZeroU8": [
+   480,
+   804,
+   510,
+   834
+  ],
+  "Dtc_FailWatchThd": [
+   480,
+   1548,
+   555,
+   1582
+  ],
+  "Dtc_FallbackSupportSwapThd": [
+   480,
+   1672,
+   555,
+   1706
+  ],
+  "Dtc_InitWaitThd": [
+   480,
+   1796,
+   555,
+   1830
+  ],
+  "Dtc_MasterSwapThd": [
+   480,
+   1920,
+   555,
+   1954
+  ],
+  "Dtc_TakeoverThd": [
+   480,
+   2044,
+   555,
+   2078
+  ],
+  "Logic_AndArbLcl": [
+   1065,
+   9960,
+   1095,
+   9995
+  ],
+  "Logic_AndCondA": [
+   705,
+   435,
+   735,
+   467
+  ],
+  "Logic_AndCondD": [
+   705,
+   560,
+   735,
+   595
+  ],
+  "Logic_AndFallback2MasterTakeover": [
+   1065,
+   10860,
+   1095,
+   10892
+  ],
+  "Logic_AndFallback2Support": [
+   1065,
+   9360,
+   1095,
+   9395
+  ],
+  "Logic_AndFallback2SupportUnknown": [
+   885,
+   310,
+   915,
+   345
+  ],
+  "Logic_AndInFallbackCondD": [
+   1065,
+   6660,
+   1095,
+   6695
+  ],
+  "Logic_AndInFallbackCondE": [
+   1065,
+   9660,
+   1095,
+   9695
+  ],
+  "Logic_AndInMasterCondB": [
+   1065,
+   10260,
+   1095,
+   10295
+  ],
+  "Logic_AndInSupportCondG": [
+   1065,
+   6960,
+   1095,
+   6995
+  ],
+  "Logic_AndMaster2Fallback": [
+   1065,
+   10560,
+   1095,
+   10592
+  ],
+  "Logic_AndMaster2FallbackImmediate": [
+   705,
+   685,
+   735,
+   720
+  ],
+  "Logic_AndSupport2Fallback": [
+   885,
+   185,
+   915,
+   220
+  ],
+  "Logic_AndSupport2MasterTakeover": [
+   1065,
+   11160,
+   1095,
+   11192
+  ],
+  "Logic_NotIlcFailed": [
+   705,
+   185,
+   735,
+   217
+  ],
+  "Logic_NotShutdown": [
+   705,
+   310,
+   735,
+   342
+  ],
+  "Logic_OrCondC": [
+   885,
+   60,
+   915,
+   95
+  ],
+  "Logic_OrRmtDisShut": [
+   705,
+   810,
+   735,
+   845
+  ],
+  "MLR_STM_Chart": [
+   1065,
+   6360,
+   1115,
+   6570
+  ],
+  "Relop_FailWatchDone": [
+   705,
+   60,
+   735,
+   91
+  ],
+  "Relop_FallbackSwapDone": [
+   1065,
+   7860,
+   1095,
+   7891
+  ],
+  "Relop_IlcFailed": [
+   480,
+   2416,
+   510,
+   2447
+  ],
+  "Relop_InitWaitDone": [
+   1065,
+   8160,
+   1095,
+   8191
+  ],
+  "Relop_LaneOperShutdown": [
+   480,
+   2540,
+   510,
+   2571
+  ],
+  "Relop_LaneStsFailed": [
+   480,
+   2168,
+   510,
+   2199
+  ],
+  "Relop_LclDisabled": [
+   480,
+   2292,
+   510,
+   2323
+  ],
+  "Relop_LclGtRmt": [
+   480,
+   2664,
+   510,
+   2695
+  ],
+  "Relop_LclLtRmt": [
+   480,
+   2788,
+   510,
+   2819
+  ],
+  "Relop_MasterSwapDone": [
+   1065,
+   8460,
+   1095,
+   8491
+  ],
+  "Relop_RmtDisabled": [
+   480,
+   3036,
+   510,
+   3067
+  ],
+  "Relop_RmtFallback": [
+   480,
+   3160,
+   510,
+   3191
+  ],
+  "Relop_RmtFitnessValid": [
+   480,
+   2912,
+   510,
+   2943
+  ],
+  "Relop_RmtMaster": [
+   480,
+   3284,
+   510,
+   3315
+  ],
+  "Relop_RmtNotMaster": [
+   480,
+   3408,
+   510,
+   3439
+  ],
+  "Relop_RmtShutdown": [
+   480,
+   3532,
+   510,
+   3563
+  ],
+  "Relop_RmtUnknown": [
+   480,
+   3656,
+   510,
+   3687
+  ],
+  "Relop_RoleIs1": [
+   1065,
+   1260,
+   1095,
+   1291
+  ],
+  "Relop_RoleIs2": [
+   1065,
+   7560,
+   1095,
+   7591
+  ],
+  "Relop_RoleIs3": [
+   1065,
+   7260,
+   1095,
+   7291
+  ],
+  "Relop_RoleIs4": [
+   1065,
+   1560,
+   1095,
+   1591
+  ],
+  "Relop_SupportTakeoverDone": [
+   1065,
+   8760,
+   1095,
+   8791
+  ],
+  "Relop_TakeoverDone": [
+   1065,
+   9060,
+   1095,
+   9091
+  ],
+  "Sum_FallbackMasterPlus1": [
+   1065,
+   1860,
+   1095,
+   1892
+  ],
+  "Sum_FallbackSupportPlus1": [
+   1065,
+   2160,
+   1095,
+   2192
+  ],
+  "Sum_InitWaitPlus1": [
+   1065,
+   2460,
+   1095,
+   2492
+  ],
+  "Sum_MasterSwapPlus1": [
+   1065,
+   2760,
+   1095,
+   2792
+  ],
+  "Sum_SupportMasterPlus1": [
+   1065,
+   3060,
+   1095,
+   3092
+  ],
+  "Switch_FallbackMaster": [
+   1065,
+   3360,
+   1115,
+   3400
+  ],
+  "Switch_FallbackSupport": [
+   1065,
+   3660,
+   1115,
+   3700
+  ],
+  "Switch_InitWait": [
+   1065,
+   3960,
+   1115,
+   4000
+  ],
+  "Switch_MasterSwap": [
+   1065,
+   4260,
+   1115,
+   4300
+  ],
+  "Switch_SupportMaster": [
+   1065,
+   4560,
+   1115,
+   4600
+  ],
+  "UnitDelay_FallbackMaster": [
+   1065,
+   4860,
+   1100,
+   4894
+  ],
+  "UnitDelay_FallbackSupport": [
+   1065,
+   5160,
+   1100,
+   5194
+  ],
+  "UnitDelay_InitWait": [
+   1065,
+   5460,
+   1100,
+   5494
+  ],
+  "UnitDelay_MasterSwap": [
+   1065,
+   5760,
+   1100,
+   5794
+  ],
+  "UnitDelay_SupportMaster": [
+   1065,
+   6060,
+   1100,
+   6094
+  ],
+  "cal_u16FallbackSupportSwapTime": [
+   480,
+   928,
+   510,
+   958
+  ],
+  "cal_u16LaneInitWaitTime": [
+   480,
+   1052,
+   510,
+   1082
+  ],
+  "cal_u16MasterFallbackSwapTime": [
+   480,
+   1176,
+   510,
+   1206
+  ],
+  "cal_u16TakeoverTime": [
+   480,
+   1300,
+   510,
+   1330
+  ],
+  "cal_u8RmtLaneFallThd": [
+   480,
+   1424,
+   510,
+   1454
+  ],
+  "u8LaneRole": [
+   1265,
+   684,
+   1295,
+   698
+  ],
+  "bLaneRoleCntrInPrgs": [
+   1265,
+   60,
+   1295,
+   74
+  ],
+  "u32InitWaitTimeCounter": [
+   1265,
+   372,
+   1295,
+   386
+  ],
+  "u32FallbackMasterTakeoverCntr": [
+   1265,
+   164,
+   1295,
+   178
+  ],
+  "u32MasterFallbackSwapCntr": [
+   1265,
+   476,
+   1295,
+   490
+  ],
+  "u32SupportMasterTakeoverCntr": [
+   1265,
+   580,
+   1295,
+   594
+  ],
+  "u32FallbackSupportSwapCntr": [
+   1265,
+   268,
+   1295,
+   282
+  ]
+ },
+ "lsp": {
+  "LRM_LSP_LaneSwitchInProgs": [
+   60,
+   372,
+   275,
+   438
+  ],
+  "u8LaneRole": [
+   60,
+   528,
+   90,
+   542
+  ],
+  "bLaneRoleCntrInPrgs": [
+   60,
+   60,
+   90,
+   74
+  ],
+  "bLaneStatusCntrInPrgs": [
+   60,
+   216,
+   90,
+   230
+  ],
+  "C_FalseB": [
+   650,
+   60,
+   680,
+   90
+  ],
+  "C_OneU32": [
+   850,
+   60,
+   880,
+   90
+  ],
+  "C_TrueB": [
+   650,
+   190,
+   680,
+   220
+  ],
+  "C_ZeroU32": [
+   850,
+   190,
+   880,
+   220
+  ],
+  "Dtc_DebounceThd": [
+   425,
+   185,
+   500,
+   219
+  ],
+  "Logic_OrAnyTimer": [
+   425,
+   310,
+   455,
+   345
+  ],
+  "Relop_CntPositive": [
+   850,
+   320,
+   880,
+   351
+  ],
+  "Relop_DebounceExceed": [
+   850,
+   970,
+   880,
+   1001
+  ],
+  "Relop_RoleChanged": [
+   650,
+   450,
+   680,
+   481
+  ],
+  "Sum_CntPlus1": [
+   850,
+   450,
+   880,
+   482
+  ],
+  "Switch_CntA": [
+   850,
+   1100,
+   900,
+   1140
+  ],
+  "Switch_CntB": [
+   850,
+   580,
+   900,
+   620
+  ],
+  "Switch_CntReset": [
+   850,
+   710,
+   900,
+   750
+  ],
+  "Switch_FlagA": [
+   1450,
+   60,
+   1500,
+   100
+  ],
+  "Switch_FlagB": [
+   1250,
+   60,
+   1300,
+   100
+  ],
+  "Switch_FlagC": [
+   650,
+   320,
+   700,
+   360
+  ],
+  "Switch_FlagReset": [
+   1050,
+   60,
+   1100,
+   100
+  ],
+  "UnitDelay_Cnt": [
+   850,
+   840,
+   885,
+   874
+  ],
+  "UnitDelay_PrevRole": [
+   425,
+   435,
+   460,
+   469
+  ],
+  "cal_u8RoleChangeDebounceTime": [
+   425,
+   60,
+   455,
+   90
+  ],
+  "bLaneSwtgInProgs": [
+   1650,
+   60,
+   1680,
+   74
+  ],
+  "u32LaneSwtInPrgsCntr": [
+   1650,
+   164,
+   1680,
+   178
+  ]
+ },
+ "oa": {
+  "OutputArbitration": [
+   60,
+   243,
+   245,
+   336
+  ],
+  "u8LaneRoleIn": [
+   60,
+   426,
+   90,
+   440
+  ],
+  "bLaneSwtgInProgsIn": [
+   60,
+   60,
+   90,
+   74
+  ],
+  "u8RmtLaneRole": [
+   60,
+   792,
+   90,
+   806
+  ],
+  "u8RmtFitnessScore": [
+   60,
+   609,
+   90,
+   623
+  ],
+  "C_FiveU8": [
+   395,
+   60,
+   425,
+   90
+  ],
+  "C_Max255U8": [
+   395,
+   181,
+   425,
+   211
+  ],
+  "C_OneU8": [
+   395,
+   302,
+   425,
+   332
+  ],
+  "C_SixU8": [
+   395,
+   423,
+   425,
+   453
+  ],
+  "C_ThreeU8": [
+   1155,
+   60,
+   1185,
+   90
+  ],
+  "C_TwoU8": [
+   395,
+   544,
+   425,
+   574
+  ],
+  "C_ZeroU8": [
+   395,
+   665,
+   425,
+   695
+  ],
+  "Logic_OrFail": [
+   575,
+   60,
+   605,
+   95
+  ],
+  "Logic_OrInit": [
+   575,
+   185,
+   605,
+   220
+  ],
+  "Relop_ActvMaster": [
+   395,
+   786,
+   425,
+   817
+  ],
+  "Relop_RmtDisabled": [
+   395,
+   1028,
+   425,
+   1059
+  ],
+  "Relop_RmtFitnessInvalid": [
+   395,
+   907,
+   425,
+   938
+  ],
+  "Relop_RmtInit": [
+   395,
+   1149,
+   425,
+   1180
+  ],
+  "Relop_RmtShutdown": [
+   395,
+   1270,
+   425,
+   1301
+  ],
+  "Relop_RmtUnknown": [
+   395,
+   1391,
+   425,
+   1422
+  ],
+  "Switch_StsFail": [
+   1155,
+   190,
+   1205,
+   230
+  ],
+  "Switch_StsHbLost": [
+   955,
+   60,
+   1005,
+   100
+  ],
+  "Switch_StsInit": [
+   755,
+   60,
+   805,
+   100
+  ],
+  "bLaneSwtgInProgs": [
+   1355,
+   60,
+   1385,
+   74
+  ],
+  "bActvCtrlr": [
+   1355,
+   372,
+   1385,
+   386
+  ],
+  "u8RmtLaneSts": [
+   1355,
+   164,
+   1385,
+   178
+  ],
+  "u8LaneRole": [
+   1355,
+   268,
+   1385,
+   282
+  ]
+ }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Simulink 需求审查"
+  short_description: "按软件需求审查 Simulink 模型接口与功能逻辑，输出问题清单"
+  default_prompt: "使用 $simulink-requirement-review，根据软件需求文档审查 Simulink 模型的输入输出接口与功能逻辑是否正确，并输出带需求映射的问题清单。"

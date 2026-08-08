@@ -1,0 +1,167 @@
+{
+ "model": "EMB_LRM_LaneRoleManager_v2.slx",
+ "scope": "sf_222",
+ "layout_mode": "incremental",
+ "operations": [
+  {
+   "op": "connect",
+   "target": "sf_222:17 -> sf_222:19",
+   "params": {
+    "LabelString": "[bShutdown]",
+    "ExecutionOrder": 1
+   },
+   "ref": "tr1"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:17 -> sf_222:18",
+   "params": {
+    "LabelString": "[bLclDisabled]",
+    "ExecutionOrder": 2
+   },
+   "ref": "tr2"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:17 -> sf_222:24",
+   "params": {
+    "LabelString": "[bArbLclGtRmt]",
+    "ExecutionOrder": 3
+   },
+   "ref": "tr3"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:17 -> sf_222:23",
+   "params": {
+    "LabelString": "[bArbRmtMaster]",
+    "ExecutionOrder": 4
+   },
+   "ref": "tr4"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:18 -> sf_222:19",
+   "params": {
+    "LabelString": "[bShutdown]"
+   },
+   "ref": "tr5"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:19 -> sf_222:17",
+   "params": {
+    "LabelString": "[bNotShutdown]"
+   },
+   "ref": "tr6"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:20 -> sf_222:19",
+   "params": {
+    "LabelString": "[bShutdown]",
+    "ExecutionOrder": 1
+   },
+   "ref": "tr7"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:20 -> sf_222:18",
+   "params": {
+    "LabelString": "[bLclDisabled]",
+    "ExecutionOrder": 2
+   },
+   "ref": "tr8"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:24 -> sf_222:22",
+   "params": {
+    "LabelString": "[bMaster2Support]",
+    "ExecutionOrder": 1
+   },
+   "ref": "tr9"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:24 -> sf_222:23",
+   "params": {
+    "LabelString": "[bMaster2Fallback]",
+    "ExecutionOrder": 2
+   },
+   "ref": "tr10"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:24 -> sf_222:23",
+   "params": {
+    "LabelString": "[bMaster2FallbackImmediate]",
+    "ExecutionOrder": 3
+   },
+   "ref": "tr11"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:23 -> sf_222:24",
+   "params": {
+    "LabelString": "[bFallback2Master]",
+    "ExecutionOrder": 1
+   },
+   "ref": "tr12"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:23 -> sf_222:24",
+   "params": {
+    "LabelString": "[bFallback2MasterTakeover]",
+    "ExecutionOrder": 2
+   },
+   "ref": "tr13"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:23 -> sf_222:22",
+   "params": {
+    "LabelString": "[bFallback2Support]",
+    "ExecutionOrder": 3
+   },
+   "ref": "tr14"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:23 -> sf_222:22",
+   "params": {
+    "LabelString": "[bFallback2SupportUnknown]",
+    "ExecutionOrder": 4
+   },
+   "ref": "tr15"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:22 -> sf_222:24",
+   "params": {
+    "LabelString": "[bSupport2Master]",
+    "ExecutionOrder": 1
+   },
+   "ref": "tr16"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:22 -> sf_222:24",
+   "params": {
+    "LabelString": "[bSupport2MasterTakeover]",
+    "ExecutionOrder": 2
+   },
+   "ref": "tr17"
+  },
+  {
+   "op": "connect",
+   "target": "sf_222:22 -> sf_222:23",
+   "params": {
+    "LabelString": "[bSupport2Fallback]",
+    "ExecutionOrder": 3
+   },
+   "ref": "tr18"
+  }
+ ]
+}

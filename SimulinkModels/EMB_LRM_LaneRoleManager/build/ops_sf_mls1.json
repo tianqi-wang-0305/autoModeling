@@ -1,0 +1,21 @@
+{
+  "model": "EMB_LRM_LaneRoleManager.slx",
+  "scope": "blk_105",
+  "layout_mode": "full",
+  "operations": [
+    {"op": "configure", "target": "chart:EMB_LRM_LaneRoleManager", "params": {"ActionLanguage": "MATLAB"}},
+    {"op": "add_block", "type": "Data", "ref": "d1", "params": {"Name": "bMonitoringActive", "Scope": "Input", "DataType": "boolean"}},
+    {"op": "add_block", "type": "Data", "ref": "d2", "params": {"Name": "bHlthOk", "Scope": "Input", "DataType": "boolean"}},
+    {"op": "add_block", "type": "Data", "ref": "d3", "params": {"Name": "bHbOk", "Scope": "Input", "DataType": "boolean"}},
+    {"op": "add_block", "type": "Data", "ref": "d4", "params": {"Name": "bIlcFull", "Scope": "Input", "DataType": "boolean"}},
+    {"op": "add_block", "type": "Data", "ref": "d5", "params": {"Name": "bHbLostCond", "Scope": "Input", "DataType": "boolean"}},
+    {"op": "add_block", "type": "Data", "ref": "d6", "params": {"Name": "bFailedCond", "Scope": "Input", "DataType": "boolean"}},
+    {"op": "add_block", "type": "Data", "ref": "d7", "params": {"Name": "u8LaneStatus", "Scope": "Output", "DataType": "uint8"}},
+    {"op": "add_block", "type": "Data", "ref": "d8", "params": {"Name": "bMonActive", "Scope": "Output", "DataType": "boolean"}},
+    {"op": "add_block", "type": "State", "ref": "init", "params": {"LabelString": "INIT"}},
+    {"op": "add_block", "type": "State", "ref": "op", "params": {"LabelString": "Operating\nen: u8LaneStatus = uint8(1);\nen: bMonActive = true;"}},
+    {"op": "add_block", "type": "State", "ref": "hbl", "params": {"LabelString": "HbLost\nen: u8LaneStatus = uint8(2);\nen: bMonActive = false;"}},
+    {"op": "add_block", "type": "State", "ref": "fail", "params": {"LabelString": "Failed\nen: u8LaneStatus = uint8(3);\nen: bMonActive = false;"}},
+    {"op": "connect", "target": "? -> #init"}
+  ]
+}

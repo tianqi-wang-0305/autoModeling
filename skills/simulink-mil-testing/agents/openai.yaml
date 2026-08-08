@@ -1,0 +1,4 @@
+interface:
+  display_name: "Simulink MIL 测试"
+  short_description: "用 testing-simulink-models 生成执行 MIL 测试，覆盖 decision/condition/MCDC"
+  default_prompt: "使用 $simulink-mil-testing，只用 testing-simulink-models 工具链生成 MIL 测试用例（.mldatx + .mat + Excel 输入），在 Test Manager 中 test_run 执行，覆盖达标 decision/condition=100%、MCDC≥80%（目标100%）：有需求文件按需求生成，无需求按模型生成。"

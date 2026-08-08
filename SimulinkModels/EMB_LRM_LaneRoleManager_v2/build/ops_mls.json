@@ -1,0 +1,154 @@
+{
+ "model": "EMB_LRM_LaneRoleManager_v2.slx",
+ "scope": "blk_27",
+ "layout_mode": "full",
+ "operations": [
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8OperMode",
+   "ref": "xi1"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8LclIlcStatus",
+   "ref": "xi2"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "bLclIlcStatusQf",
+   "ref": "xi3"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8HeartbeatLostCount",
+   "ref": "xi4"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8LaneStatus",
+   "ref": "xo1"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "bLaneStatusCntrInPrgs",
+   "ref": "xo2"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u32HbMonitorCounter",
+   "ref": "xo3"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u32IlcStsMonitorCounter",
+   "ref": "xo4"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u32FailureMonitorCounter",
+   "ref": "xo5"
+  },
+  {
+   "op": "add_block",
+   "type": "SubSystem",
+   "name": "MLS_HB_Failure",
+   "ref": "hbf"
+  },
+  {
+   "op": "add_block",
+   "type": "SubSystem",
+   "name": "MLS_STM_StateMachine",
+   "ref": "stm"
+  },
+  {
+   "op": "configure",
+   "target": "#xi1",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "系统运行模式；类型 uint8；范围 0..5"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#xi2",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "本控制链路 ILC 状态；类型 uint8；范围 0..2 (0=Failed,1=Normal,2=Initialized)"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#xi3",
+   "params": {
+    "OutDataTypeStr": "boolean",
+    "Description": "本控制链路 ILC 状态信号质量；类型 boolean；范围 0..1 (1=异常,0=正常)"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#xi4",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "心跳丢失计数；类型 uint8；范围 0..255"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#xo1",
+   "params": {
+    "Description": "控制链路健康状态；类型 uint8；范围 0..3 (0=INITIALISING,1=OPERATING,2=HB_LOST,3=FAILED)"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#xo2",
+   "params": {
+    "Description": "状态切换计数器进行中标志；类型 boolean；范围 0..1"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#xo3",
+   "params": {
+    "Description": "心跳监控计数器（诊断）；类型 uint32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#xo4",
+   "params": {
+    "Description": "ILC 状态监控计数器（诊断）；类型 uint32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#xo5",
+   "params": {
+    "Description": "故障监控计数器（诊断/供 MLR 使用）；类型 uint32"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#hbf",
+   "params": {
+    "Description": "MLS_HB_Failure 心跳丢失判定：HEARTBEAT LOST COUNT 连续递增(0..255,0,1..) 时 u8HbFailure=0，否则=1；由 Unit Delay 保存上一周期值，Sum/Relational Operator/Logical Operator 组合实现"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#stm",
+   "params": {
+    "Description": "MLS_STM_StateMachine LaneStatus 状态机：条件与计数器全部在 Simulink 内计算（bMonitoringActive/bHlthOk/bHbLostCond/bFailedCond、Hb/ILC/Failure 三个 u32 计数器），boolean-gated Stateflow 实现 INIT.MonitoringOff/On、Operating、HbLost、Failed 状态转移（优先级 Operating>Failed>HbLost），图表输出 u8LaneStatus 与 bMonActive"
+   }
+  }
+ ]
+}

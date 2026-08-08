@@ -1,0 +1,15 @@
+{
+  "model": "EMB_LRM_LaneRoleManager.slx",
+  "scope": "blk_33",
+  "layout_mode": "incremental",
+  "operations": [
+    {"op": "configure", "target": "blk_252", "params": {"Name": "u8LaneRoleIn"}},
+    {"op": "configure", "target": "blk_253", "params": {"Name": "bLaneSwtgInProgsIn"}},
+    {"op": "add_block", "type": "Outport", "name": "bLaneSwtgInProgs", "ref": "oo1"},
+    {"op": "add_block", "type": "Outport", "name": "u8LaneRole", "ref": "oo4"},
+    {"op": "configure", "target": "#oo1", "params": {"Description": "控制链路切换进行中标志（直通）；类型 boolean"}},
+    {"op": "configure", "target": "#oo4", "params": {"Description": "本控制链路角色（直通）；类型 uint8；范围 0..6"}},
+    {"op": "connect", "target": "blk_253.y1 -> #oo1.u1"},
+    {"op": "connect", "target": "blk_252.y1 -> #oo4.u1"}
+  ]
+}

@@ -1,0 +1,103 @@
+status: ok
+summary: 
+  total: 10
+  passed: 10
+  failed: 0
+  untested: 0
+  duration: 30.62s
+coverage: 
+  sut: EngineCoolingFanController
+  decision: "1/2 (50.0%)"
+  condition: "10/20 (50.0%)"
+  mcdc: "0/5 (0.0%)"
+results: 
+  - name: TC01_OffBelowLo
+    suite: MIL_ECFC
+    outcome: passed
+    duration: 9.27s
+    coverage: 
+      sut: EngineCoolingFanController
+      decision: "1/2 (50.0%)"
+      condition: "10/20 (50.0%)"
+      mcdc: "0/5 (0.0%)"
+  - name: TC02_HoldOff_Deadband
+    suite: MIL_ECFC
+    outcome: passed
+    duration: 3.77s
+    coverage: 
+      sut: EngineCoolingFanController
+      decision: "1/2 (50.0%)"
+      condition: "10/20 (50.0%)"
+      mcdc: "0/5 (0.0%)"
+  - name: TC03_OnAboveHi
+    suite: MIL_ECFC
+    outcome: passed
+    duration: 2.13s
+    coverage: 
+      sut: EngineCoolingFanController
+      decision: "1/2 (50.0%)"
+      condition: "10/20 (50.0%)"
+      mcdc: "0/5 (0.0%)"
+  - name: TC04_HoldOn_Deadband
+    suite: MIL_ECFC
+    outcome: passed
+    duration: 1.67s
+    coverage: 
+      sut: EngineCoolingFanController
+      decision: "1/2 (50.0%)"
+      condition: "10/20 (50.0%)"
+      mcdc: "0/5 (0.0%)"
+  - name: TC05_ResetBelowLo
+    suite: MIL_ECFC
+    outcome: passed
+    duration: 1.45s
+    coverage: 
+      sut: EngineCoolingFanController
+      decision: "1/2 (50.0%)"
+      condition: "10/20 (50.0%)"
+      mcdc: "0/5 (0.0%)"
+  - name: TC06_IgnOff_Gate
+    suite: MIL_ECFC
+    outcome: passed
+    duration: 1.45s
+    coverage: 
+      sut: EngineCoolingFanController
+      decision: "1/2 (50.0%)"
+      condition: "10/20 (50.0%)"
+      mcdc: "0/5 (0.0%)"
+  - name: TC07_Fault_HighTemp
+    suite: MIL_ECFC
+    outcome: passed
+    duration: 1.13s
+    coverage: 
+      sut: EngineCoolingFanController
+      decision: "1/2 (50.0%)"
+      condition: "10/20 (50.0%)"
+      mcdc: "0/5 (0.0%)"
+  - name: TC08_FaultRecovery
+    suite: MIL_ECFC
+    outcome: passed
+    duration: 1.06s
+    coverage: 
+      sut: EngineCoolingFanController
+      decision: "1/2 (50.0%)"
+      condition: "10/20 (50.0%)"
+      mcdc: "0/5 (0.0%)"
+  - name: TC09_Boundary_Exact
+    suite: MIL_ECFC
+    outcome: passed
+    duration: 1.14s
+    coverage: 
+      sut: EngineCoolingFanController
+      decision: "1/2 (50.0%)"
+      condition: "10/20 (50.0%)"
+      mcdc: "0/5 (0.0%)"
+  - name: TC10_Hysteresis_Cycle
+    suite: MIL_ECFC
+    outcome: passed
+    duration: 1.07s
+    coverage: 
+      sut: EngineCoolingFanController
+      decision: "1/2 (50.0%)"
+      condition: "10/20 (50.0%)"
+      mcdc: "0/5 (0.0%)"

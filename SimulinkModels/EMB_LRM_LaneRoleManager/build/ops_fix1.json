@@ -1,0 +1,11 @@
+{
+  "model": "EMB_LRM_LaneRoleManager.slx",
+  "scope": "blk_31",
+  "layout_mode": "incremental",
+  "operations": [
+    {"op": "connect", "target": "blk_154.y1 -> blk_183.u2"},
+    {"op": "connect", "target": "blk_155.y1 -> blk_184.u2"},
+    {"op": "connect", "target": "blk_156.y1 -> blk_185.u2"},
+    {"op": "connect", "target": "blk_157.y1 -> blk_186.u2"}
+  ]
+}

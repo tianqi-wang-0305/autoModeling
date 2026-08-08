@@ -1,0 +1,263 @@
+{
+ "model": "EMB_LRM_LaneRoleManager_v2.slx",
+ "scope": "blk_13",
+ "layout_mode": "incremental",
+ "operations": [
+  {
+   "op": "connect",
+   "target": "blk_14.y1 -> blk_26.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_15.y1 -> blk_26.u2"
+  },
+  {
+   "op": "connect",
+   "target": "blk_16.y1 -> blk_26.u3"
+  },
+  {
+   "op": "connect",
+   "target": "blk_17.y1 -> blk_26.u4"
+  },
+  {
+   "op": "connect",
+   "target": "blk_18.y1 -> blk_26.u5"
+  },
+  {
+   "op": "connect",
+   "target": "blk_19.y1 -> blk_26.u6"
+  },
+  {
+   "op": "connect",
+   "target": "blk_20.y1 -> blk_26.u7"
+  },
+  {
+   "op": "connect",
+   "target": "blk_21.y1 -> blk_26.u8"
+  },
+  {
+   "op": "connect",
+   "target": "blk_26.y1 -> blk_27.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_26.y2 -> blk_28.u4"
+  },
+  {
+   "op": "connect",
+   "target": "blk_26.y3 -> blk_28.u5"
+  },
+  {
+   "op": "connect",
+   "target": "blk_26.y3 -> blk_30.u3"
+  },
+  {
+   "op": "connect",
+   "target": "blk_26.y4 -> blk_28.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_26.y5 -> blk_28.u2"
+  },
+  {
+   "op": "connect",
+   "target": "blk_26.y5 -> blk_30.u4"
+  },
+  {
+   "op": "connect",
+   "target": "blk_26.y6 -> blk_27.u2"
+  },
+  {
+   "op": "connect",
+   "target": "blk_26.y6 -> blk_28.u3"
+  },
+  {
+   "op": "connect",
+   "target": "blk_26.y7 -> blk_27.u3"
+  },
+  {
+   "op": "connect",
+   "target": "blk_26.y8 -> blk_27.u4"
+  },
+  {
+   "op": "connect",
+   "target": "blk_27.y1 -> blk_28.u6"
+  },
+  {
+   "op": "connect",
+   "target": "blk_27.y2 -> blk_29.u3"
+  },
+  {
+   "op": "connect",
+   "target": "blk_27.y5 -> blk_28.u7"
+  },
+  {
+   "op": "connect",
+   "target": "blk_28.y1 -> blk_29.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_28.y1 -> blk_30.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_28.y2 -> blk_29.u2"
+  },
+  {
+   "op": "connect",
+   "target": "blk_29.y1 -> blk_30.u2"
+  },
+  {
+   "op": "connect",
+   "target": "blk_30.y1 -> blk_22.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_30.y2 -> blk_23.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_30.y3 -> blk_24.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_30.y4 -> blk_25.u1"
+  },
+  {
+   "op": "add_block",
+   "type": "Terminator",
+   "name": "Term_HbMon",
+   "ref": "th1"
+  },
+  {
+   "op": "configure",
+   "target": "#th1",
+   "params": {
+    "Description": "诊断计数器终止"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Terminator",
+   "name": "Term_IlcMon",
+   "ref": "th2"
+  },
+  {
+   "op": "configure",
+   "target": "#th2",
+   "params": {
+    "Description": "诊断计数器终止"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Terminator",
+   "name": "Term_InitWait",
+   "ref": "th3"
+  },
+  {
+   "op": "configure",
+   "target": "#th3",
+   "params": {
+    "Description": "诊断计数器终止"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Terminator",
+   "name": "Term_FbMastTk",
+   "ref": "th4"
+  },
+  {
+   "op": "configure",
+   "target": "#th4",
+   "params": {
+    "Description": "诊断计数器终止"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Terminator",
+   "name": "Term_MastFbSw",
+   "ref": "th5"
+  },
+  {
+   "op": "configure",
+   "target": "#th5",
+   "params": {
+    "Description": "诊断计数器终止"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Terminator",
+   "name": "Term_SupMastTk",
+   "ref": "th6"
+  },
+  {
+   "op": "configure",
+   "target": "#th6",
+   "params": {
+    "Description": "诊断计数器终止"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Terminator",
+   "name": "Term_FbSupSw",
+   "ref": "th7"
+  },
+  {
+   "op": "configure",
+   "target": "#th7",
+   "params": {
+    "Description": "诊断计数器终止"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "Terminator",
+   "name": "Term_LspCntr",
+   "ref": "th8"
+  },
+  {
+   "op": "configure",
+   "target": "#th8",
+   "params": {
+    "Description": "诊断计数器终止"
+   }
+  },
+  {
+   "op": "connect",
+   "target": "blk_27.y3 -> #th1.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_27.y4 -> #th2.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_28.y3 -> #th3.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_28.y4 -> #th4.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_28.y5 -> #th5.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_28.y6 -> #th6.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_28.y7 -> #th7.u1"
+  },
+  {
+   "op": "connect",
+   "target": "blk_29.y2 -> #th8.u1"
+  }
+ ]
+}

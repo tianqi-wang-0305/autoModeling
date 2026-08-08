@@ -1,0 +1,11 @@
+{
+  "model": "EMB_LRM_LaneRoleManager.slx",
+  "scope": "sf_225:20",
+  "layout_mode": "full",
+  "operations": [
+    {"op": "add_block", "type": "State", "ref": "sup", "params": {"LabelString": "MLR_STM_Support\nen: u8LaneRole = uint8(4);"}},
+    {"op": "add_block", "type": "State", "ref": "fb", "params": {"LabelString": "MLR_STM_FallBack\nen: u8LaneRole = uint8(3);"}},
+    {"op": "add_block", "type": "State", "ref": "mst", "params": {"LabelString": "MLR_STM_Master\nen: u8LaneRole = uint8(2);"}},
+    {"op": "connect", "target": "? -> #fb"}
+  ]
+}

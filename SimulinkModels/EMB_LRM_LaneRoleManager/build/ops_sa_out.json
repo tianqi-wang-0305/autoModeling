@@ -1,0 +1,31 @@
+{
+  "model": "EMB_LRM_LaneRoleManager.slx",
+  "scope": "blk_29",
+  "layout_mode": "incremental",
+  "operations": [
+    {"op": "add_block", "type": "Outport", "name": "u8OperModeOut", "ref": "so1"},
+    {"op": "add_block", "type": "Outport", "name": "u8LclLaneOperModeOut", "ref": "so2"},
+    {"op": "add_block", "type": "Outport", "name": "u8RmtLaneRoleOut", "ref": "so3"},
+    {"op": "add_block", "type": "Outport", "name": "u8LclFitnessScoreOut", "ref": "so4"},
+    {"op": "add_block", "type": "Outport", "name": "u8RmtFitnessScoreOut", "ref": "so5"},
+    {"op": "add_block", "type": "Outport", "name": "u8LclIlcStatusOut", "ref": "so6"},
+    {"op": "add_block", "type": "Outport", "name": "bLclIlcStatusQfOut", "ref": "so7"},
+    {"op": "add_block", "type": "Outport", "name": "u8HeartbeatLostCountOut", "ref": "so8"},
+    {"op": "configure", "target": "#so1", "params": {"Description": "系统运行模式（直通输出）；类型 uint8；单位 -；范围 0..5"}},
+    {"op": "configure", "target": "#so2", "params": {"Description": "本控制链路运行模式（直通输出）；类型 uint8；单位 -；范围 0..5"}},
+    {"op": "configure", "target": "#so3", "params": {"Description": "远控制链路当前角色（直通输出）；类型 uint8；单位 -；范围 0..6"}},
+    {"op": "configure", "target": "#so4", "params": {"Description": "本控制链路健康度得分（直通输出）；类型 uint8；单位 -；范围 0..255"}},
+    {"op": "configure", "target": "#so5", "params": {"Description": "远控制链路健康度得分（直通输出）；类型 uint8；单位 -；范围 0..255"}},
+    {"op": "configure", "target": "#so6", "params": {"Description": "本控制链路 ILC 状态（直通输出）；类型 uint8；单位 -；范围 0..2"}},
+    {"op": "configure", "target": "#so7", "params": {"Description": "本控制链路 ILC 状态信号质量（直通输出）；类型 boolean；单位 -；范围 0..1"}},
+    {"op": "configure", "target": "#so8", "params": {"Description": "心跳丢失计数（直通输出）；类型 uint8；单位 -；范围 0..255"}},
+    {"op": "connect", "target": "blk_34.y1 -> #so1.u1"},
+    {"op": "connect", "target": "blk_35.y1 -> #so2.u1"},
+    {"op": "connect", "target": "blk_36.y1 -> #so3.u1"},
+    {"op": "connect", "target": "blk_37.y1 -> #so4.u1"},
+    {"op": "connect", "target": "blk_38.y1 -> #so5.u1"},
+    {"op": "connect", "target": "blk_39.y1 -> #so6.u1"},
+    {"op": "connect", "target": "blk_40.y1 -> #so7.u1"},
+    {"op": "connect", "target": "blk_41.y1 -> #so8.u1"}
+  ]
+}

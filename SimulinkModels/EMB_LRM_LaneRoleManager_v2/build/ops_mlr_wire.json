@@ -1,0 +1,475 @@
+{
+ "model": "EMB_LRM_LaneRoleManager_v2.slx",
+ "scope": "blk_28",
+ "layout_mode": "incremental",
+ "operations": [
+  {
+   "op": "connect",
+   "target": "131.y1 -> 163.u1"
+  },
+  {
+   "op": "connect",
+   "target": "131.y1 -> 164.u1"
+  },
+  {
+   "op": "connect",
+   "target": "131.y1 -> 165.u1"
+  },
+  {
+   "op": "connect",
+   "target": "132.y1 -> 176.u1"
+  },
+  {
+   "op": "connect",
+   "target": "132.y1 -> 164.u2"
+  },
+  {
+   "op": "connect",
+   "target": "132.y1 -> 165.u2"
+  },
+  {
+   "op": "connect",
+   "target": "133.y1 -> 174.u1"
+  },
+  {
+   "op": "connect",
+   "target": "134.y1 -> 161.u1"
+  },
+  {
+   "op": "connect",
+   "target": "135.y1 -> 166.u1"
+  },
+  {
+   "op": "connect",
+   "target": "135.y1 -> 167.u1"
+  },
+  {
+   "op": "connect",
+   "target": "135.y1 -> 168.u1"
+  },
+  {
+   "op": "connect",
+   "target": "135.y1 -> 169.u1"
+  },
+  {
+   "op": "connect",
+   "target": "135.y1 -> 170.u1"
+  },
+  {
+   "op": "connect",
+   "target": "135.y1 -> 172.u1"
+  },
+  {
+   "op": "connect",
+   "target": "136.y1 -> 173.u1"
+  },
+  {
+   "op": "connect",
+   "target": "137.y1 -> 214.u1"
+  },
+  {
+   "op": "connect",
+   "target": "157.y1 -> 163.u2"
+  },
+  {
+   "op": "connect",
+   "target": "158.y1 -> 176.u2"
+  },
+  {
+   "op": "connect",
+   "target": "150.y1 -> 174.u2"
+  },
+  {
+   "op": "connect",
+   "target": "150.y1 -> 172.u2"
+  },
+  {
+   "op": "connect",
+   "target": "155.y1 -> 161.u2"
+  },
+  {
+   "op": "connect",
+   "target": "155.y1 -> 169.u2"
+  },
+  {
+   "op": "connect",
+   "target": "156.y1 -> 170.u2"
+  },
+  {
+   "op": "connect",
+   "target": "152.y1 -> 166.u2"
+  },
+  {
+   "op": "connect",
+   "target": "152.y1 -> 168.u2"
+  },
+  {
+   "op": "connect",
+   "target": "153.y1 -> 167.u2"
+  },
+  {
+   "op": "connect",
+   "target": "153.y1 -> 173.u2"
+  },
+  {
+   "op": "connect",
+   "target": "161.y1 -> 162.u1"
+  },
+  {
+   "op": "connect",
+   "target": "169.y1 -> 171.u1"
+  },
+  {
+   "op": "connect",
+   "target": "170.y1 -> 171.u2"
+  },
+  {
+   "op": "connect",
+   "target": "173.y1 -> 178.u1"
+  },
+  {
+   "op": "connect",
+   "target": "171.y1 -> 178.u2"
+  },
+  {
+   "op": "connect",
+   "target": "174.y1 -> 175.u1"
+  },
+  {
+   "op": "connect",
+   "target": "174.y1 -> 177.u1"
+  },
+  {
+   "op": "connect",
+   "target": "176.y1 -> 177.u2"
+  },
+  {
+   "op": "connect",
+   "target": "165.y1 -> 177.u3"
+  },
+  {
+   "op": "connect",
+   "target": "164.y1 -> 179.u1"
+  },
+  {
+   "op": "connect",
+   "target": "176.y1 -> 179.u2"
+  },
+  {
+   "op": "connect",
+   "target": "165.y1 -> 215.u1"
+  },
+  {
+   "op": "connect",
+   "target": "167.y1 -> 215.u2"
+  },
+  {
+   "op": "connect",
+   "target": "207.y1 -> 215.u3"
+  },
+  {
+   "op": "connect",
+   "target": "165.y1 -> 216.u1"
+  },
+  {
+   "op": "connect",
+   "target": "166.y1 -> 216.u2"
+  },
+  {
+   "op": "connect",
+   "target": "179.y1 -> 217.u1"
+  },
+  {
+   "op": "connect",
+   "target": "209.y1 -> 217.u2"
+  },
+  {
+   "op": "connect",
+   "target": "168.y1 -> 217.u3"
+  },
+  {
+   "op": "connect",
+   "target": "174.y1 -> 218.u1"
+  },
+  {
+   "op": "connect",
+   "target": "212.y1 -> 218.u2"
+  },
+  {
+   "op": "connect",
+   "target": "172.y1 -> 219.u1"
+  },
+  {
+   "op": "connect",
+   "target": "214.y1 -> 219.u2"
+  },
+  {
+   "op": "connect",
+   "target": "179.y1 -> 220.u1"
+  },
+  {
+   "op": "connect",
+   "target": "210.y1 -> 220.u2"
+  },
+  {
+   "op": "connect",
+   "target": "168.y1 -> 220.u3"
+  },
+  {
+   "op": "connect",
+   "target": "175.y1 -> 221.u1"
+  },
+  {
+   "op": "connect",
+   "target": "166.y1 -> 221.u2"
+  },
+  {
+   "op": "connect",
+   "target": "186.y1 -> 184.u1"
+  },
+  {
+   "op": "connect",
+   "target": "160.y1 -> 184.u2"
+  },
+  {
+   "op": "connect",
+   "target": "184.y1 -> 185.u1"
+  },
+  {
+   "op": "connect",
+   "target": "180.y1 -> 185.u2"
+  },
+  {
+   "op": "connect",
+   "target": "159.y1 -> 185.u3"
+  },
+  {
+   "op": "connect",
+   "target": "185.y1 -> 186.u1"
+  },
+  {
+   "op": "connect",
+   "target": "186.y1 -> 140.u1"
+  },
+  {
+   "op": "connect",
+   "target": "181.y1 -> 187.u1"
+  },
+  {
+   "op": "connect",
+   "target": "165.y1 -> 187.u2"
+  },
+  {
+   "op": "connect",
+   "target": "190.y1 -> 188.u1"
+  },
+  {
+   "op": "connect",
+   "target": "160.y1 -> 188.u2"
+  },
+  {
+   "op": "connect",
+   "target": "188.y1 -> 189.u1"
+  },
+  {
+   "op": "connect",
+   "target": "187.y1 -> 189.u2"
+  },
+  {
+   "op": "connect",
+   "target": "159.y1 -> 189.u3"
+  },
+  {
+   "op": "connect",
+   "target": "189.y1 -> 190.u1"
+  },
+  {
+   "op": "connect",
+   "target": "190.y1 -> 142.u1"
+  },
+  {
+   "op": "connect",
+   "target": "182.y1 -> 191.u1"
+  },
+  {
+   "op": "connect",
+   "target": "179.y1 -> 191.u2"
+  },
+  {
+   "op": "connect",
+   "target": "194.y1 -> 192.u1"
+  },
+  {
+   "op": "connect",
+   "target": "160.y1 -> 192.u2"
+  },
+  {
+   "op": "connect",
+   "target": "192.y1 -> 193.u1"
+  },
+  {
+   "op": "connect",
+   "target": "191.y1 -> 193.u2"
+  },
+  {
+   "op": "connect",
+   "target": "159.y1 -> 193.u3"
+  },
+  {
+   "op": "connect",
+   "target": "193.y1 -> 194.u1"
+  },
+  {
+   "op": "connect",
+   "target": "194.y1 -> 141.u1"
+  },
+  {
+   "op": "connect",
+   "target": "182.y1 -> 195.u1"
+  },
+  {
+   "op": "connect",
+   "target": "174.y1 -> 195.u2"
+  },
+  {
+   "op": "connect",
+   "target": "198.y1 -> 196.u1"
+  },
+  {
+   "op": "connect",
+   "target": "160.y1 -> 196.u2"
+  },
+  {
+   "op": "connect",
+   "target": "196.y1 -> 197.u1"
+  },
+  {
+   "op": "connect",
+   "target": "195.y1 -> 197.u2"
+  },
+  {
+   "op": "connect",
+   "target": "159.y1 -> 197.u3"
+  },
+  {
+   "op": "connect",
+   "target": "197.y1 -> 198.u1"
+  },
+  {
+   "op": "connect",
+   "target": "198.y1 -> 144.u1"
+  },
+  {
+   "op": "connect",
+   "target": "183.y1 -> 199.u1"
+  },
+  {
+   "op": "connect",
+   "target": "179.y1 -> 199.u2"
+  },
+  {
+   "op": "connect",
+   "target": "202.y1 -> 200.u1"
+  },
+  {
+   "op": "connect",
+   "target": "160.y1 -> 200.u2"
+  },
+  {
+   "op": "connect",
+   "target": "200.y1 -> 201.u1"
+  },
+  {
+   "op": "connect",
+   "target": "199.y1 -> 201.u2"
+  },
+  {
+   "op": "connect",
+   "target": "159.y1 -> 201.u3"
+  },
+  {
+   "op": "connect",
+   "target": "201.y1 -> 202.u1"
+  },
+  {
+   "op": "connect",
+   "target": "202.y1 -> 143.u1"
+  },
+  {
+   "op": "connect",
+   "target": "145.y1 -> 203.u1"
+  },
+  {
+   "op": "connect",
+   "target": "203.y1 -> 204.u2"
+  },
+  {
+   "op": "connect",
+   "target": "186.y1 -> 204.u1"
+  },
+  {
+   "op": "connect",
+   "target": "204.y1 -> 205.u1"
+  },
+  {
+   "op": "connect",
+   "target": "164.y1 -> 205.u2"
+  },
+  {
+   "op": "connect",
+   "target": "148.y1 -> 206.u1"
+  },
+  {
+   "op": "connect",
+   "target": "206.y1 -> 207.u2"
+  },
+  {
+   "op": "connect",
+   "target": "190.y1 -> 207.u1"
+  },
+  {
+   "op": "connect",
+   "target": "146.y1 -> 208.u1"
+  },
+  {
+   "op": "connect",
+   "target": "208.y1 -> 209.u2"
+  },
+  {
+   "op": "connect",
+   "target": "194.y1 -> 209.u1"
+  },
+  {
+   "op": "connect",
+   "target": "208.y1 -> 210.u2"
+  },
+  {
+   "op": "connect",
+   "target": "202.y1 -> 210.u1"
+  },
+  {
+   "op": "connect",
+   "target": "147.y1 -> 211.u1"
+  },
+  {
+   "op": "connect",
+   "target": "211.y1 -> 212.u2"
+  },
+  {
+   "op": "connect",
+   "target": "198.y1 -> 212.u1"
+  },
+  {
+   "op": "connect",
+   "target": "149.y1 -> 213.u1"
+  },
+  {
+   "op": "connect",
+   "target": "213.y1 -> 214.u2"
+  },
+  {
+   "op": "connect",
+   "target": "180.y1 -> 139.u1"
+  }
+ ]
+}

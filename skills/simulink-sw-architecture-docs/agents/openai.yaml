@@ -1,0 +1,4 @@
+interface:
+  display_name: "Simulink 软件架构文档"
+  short_description: "汇总全部需求与 Simulink 模型，生成软件功能架构文档集与追溯矩阵"
+  default_prompt: "使用 $simulink-sw-architecture-docs，基于我提供的全部软件需求和 Simulink 模型（可能分散在多个文件夹），必选交付 System Composer 架构模型（结合 building-architecture-models 技能，F/L/P 分层、接口字典、分配集、需求链接），并生成配套文档：架构总览、接口规格、功能规格、需求追溯矩阵、标定清单。"

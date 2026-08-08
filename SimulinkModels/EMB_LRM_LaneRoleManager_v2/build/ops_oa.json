@@ -1,0 +1,491 @@
+{
+ "model": "EMB_LRM_LaneRoleManager_v2.slx",
+ "scope": "blk_30",
+ "layout_mode": "full",
+ "operations": [
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8LaneRoleIn",
+   "ref": "oi1"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "bLaneSwtgInProgsIn",
+   "ref": "oi2"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8RmtLaneRole",
+   "ref": "oi3"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8RmtFitnessScore",
+   "ref": "oi4"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "bLaneSwtgInProgs",
+   "ref": "oo1"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "bActvCtrlr",
+   "ref": "oo2"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8RmtLaneSts",
+   "ref": "oo3"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8LaneRole",
+   "ref": "oo4"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_ZeroU8",
+   "ref": "kc0"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_OneU8",
+   "ref": "kc1"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_TwoU8",
+   "ref": "kc2"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_ThreeU8",
+   "ref": "kc3"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_FiveU8",
+   "ref": "kc5"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_SixU8",
+   "ref": "kc6"
+  },
+  {
+   "op": "add_block",
+   "type": "Constant",
+   "name": "C_Max255U8",
+   "ref": "kc255"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_ActvMaster",
+   "ref": "ractv"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_RmtDisabled",
+   "ref": "rd1"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_RmtShutdown",
+   "ref": "rd2"
+  },
+  {
+   "op": "add_block",
+   "type": "Logic",
+   "name": "Logic_OrFail",
+   "ref": "orfail"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_RmtFitnessInvalid",
+   "ref": "rinv"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_RmtUnknown",
+   "ref": "run"
+  },
+  {
+   "op": "add_block",
+   "type": "RelationalOperator",
+   "name": "Relop_RmtInit",
+   "ref": "rin"
+  },
+  {
+   "op": "add_block",
+   "type": "Logic",
+   "name": "Logic_OrInit",
+   "ref": "orinit"
+  },
+  {
+   "op": "add_block",
+   "type": "Switch",
+   "name": "Switch_StsFail",
+   "ref": "swf"
+  },
+  {
+   "op": "add_block",
+   "type": "Switch",
+   "name": "Switch_StsHbLost",
+   "ref": "swh"
+  },
+  {
+   "op": "add_block",
+   "type": "Switch",
+   "name": "Switch_StsInit",
+   "ref": "swi"
+  },
+  {
+   "op": "configure",
+   "target": "#oi1",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "本控制链路角色（来自 MLR）；类型 uint8；范围 0..6"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#oi2",
+   "params": {
+    "OutDataTypeStr": "boolean",
+    "Description": "控制链路切换进行中标志（来自 LSP）；类型 boolean"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#oi3",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "远控制链路当前角色；类型 uint8；范围 0..6"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#oi4",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "远控制链路健康度得分；类型 uint8；范围 0..255"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#oo1",
+   "params": {
+    "Description": "控制链路切换进行中标志（直通）；类型 boolean"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#oo2",
+   "params": {
+    "Description": "活动控制器实例标志（角色==MASTER）；类型 boolean"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#oo3",
+   "params": {
+    "Description": "远控制链路状态；类型 uint8；范围 0..3"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#oo4",
+   "params": {
+    "Description": "本控制链路角色（直通）；类型 uint8；范围 0..6"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#kc0",
+   "params": {
+    "Value": "0",
+    "OutDataTypeStr": "uint8",
+    "Description": "常量 0（LANE_STS_INITIALISING）；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#kc1",
+   "params": {
+    "Value": "1",
+    "OutDataTypeStr": "uint8",
+    "Description": "常量 1（LANE_STS_OPERATING）；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#kc2",
+   "params": {
+    "Value": "2",
+    "OutDataTypeStr": "uint8",
+    "Description": "常量 2（LN_ROLE_MASTER）；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#kc3",
+   "params": {
+    "Value": "3",
+    "OutDataTypeStr": "uint8",
+    "Description": "常量 3（LANE_STS_FAILED）；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#kc5",
+   "params": {
+    "Value": "5",
+    "OutDataTypeStr": "uint8",
+    "Description": "常量 5（LN_ROLE_DISABLED）；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#kc6",
+   "params": {
+    "Value": "6",
+    "OutDataTypeStr": "uint8",
+    "Description": "常量 6（LN_ROLE_SHUTTING_DOWN）；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#kc255",
+   "params": {
+    "Value": "255",
+    "OutDataTypeStr": "uint8",
+    "Description": "常量 255（健康度无效）；uint8"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#ractv",
+   "params": {
+    "Operator": "==",
+    "Description": "活动控制器：本链路角色==MASTER"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rd1",
+   "params": {
+    "Operator": "==",
+    "Description": "远程角色==DISABLED"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rd2",
+   "params": {
+    "Operator": "==",
+    "Description": "远程角色==SHUTTING_DOWN"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#orfail",
+   "params": {
+    "Operator": "OR",
+    "Inputs": "2",
+    "IconShape": "rectangular",
+    "Description": "远程禁用或关闭 -> FAILED"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rinv",
+   "params": {
+    "Operator": "==",
+    "Description": "远程健康度==255（无效）-> HB_LOST"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#run",
+   "params": {
+    "Operator": "==",
+    "Description": "远程角色==UNKNOWN"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#rin",
+   "params": {
+    "Operator": "==",
+    "Description": "远程角色==INIT"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#orinit",
+   "params": {
+    "Operator": "OR",
+    "Inputs": "2",
+    "IconShape": "rectangular",
+    "Description": "远程 UNKNOWN/INIT -> INITIALISING"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#swf",
+   "params": {
+    "Description": "状态映射优先级 1：禁用/关闭 -> FAILED(3)"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#swh",
+   "params": {
+    "Description": "状态映射优先级 2：健康度无效 -> HB_LOST(2)"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#swi",
+   "params": {
+    "Description": "状态映射优先级 3：UNKNOWN/INIT -> INITIALISING(0)，否则 OPERATING(1)"
+   }
+  },
+  {
+   "op": "connect",
+   "target": "#oi1.y1 -> #ractv.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#kc2.y1 -> #ractv.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#ractv.y1 -> #oo2.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#oi2.y1 -> #oo1.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#oi1.y1 -> #oo4.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#oi3.y1 -> #rd1.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#kc5.y1 -> #rd1.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#oi3.y1 -> #rd2.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#kc6.y1 -> #rd2.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#rd1.y1 -> #orfail.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rd2.y1 -> #orfail.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#kc3.y1 -> #swf.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#orfail.y1 -> #swf.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#swh.y1 -> #swf.u3"
+  },
+  {
+   "op": "connect",
+   "target": "#oi4.y1 -> #rinv.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#kc255.y1 -> #rinv.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#kc2.y1 -> #swh.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rinv.y1 -> #swh.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#swi.y1 -> #swh.u3"
+  },
+  {
+   "op": "connect",
+   "target": "#oi3.y1 -> #run.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#kc0.y1 -> #run.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#oi3.y1 -> #rin.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#kc1.y1 -> #rin.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#run.y1 -> #orinit.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#rin.y1 -> #orinit.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#kc0.y1 -> #swi.u1"
+  },
+  {
+   "op": "connect",
+   "target": "#orinit.y1 -> #swi.u2"
+  },
+  {
+   "op": "connect",
+   "target": "#kc1.y1 -> #swi.u3"
+  },
+  {
+   "op": "connect",
+   "target": "#swf.y1 -> #oo3.u1"
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "model": "EMB_LRM_LaneRoleManager_v2.slx",
+ "scope": "sf_102:9",
+ "layout_mode": "full",
+ "operations": [
+  {
+   "op": "add_block",
+   "type": "State",
+   "ref": "moff",
+   "params": {
+    "LabelString": "MonitoringOff\nen: u8LaneStatus = uint8(0);\nen: bMonActive = false;"
+   }
+  },
+  {
+   "op": "add_block",
+   "type": "State",
+   "ref": "mon",
+   "params": {
+    "LabelString": "MonitoringOn\nen: u8LaneStatus = uint8(0);\nen: bMonActive = true;"
+   }
+  },
+  {
+   "op": "connect",
+   "target": "? -> #moff"
+  }
+ ]
+}

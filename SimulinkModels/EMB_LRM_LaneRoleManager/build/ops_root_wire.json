@@ -1,0 +1,19 @@
+{
+  "model": "EMB_LRM_LaneRoleManager.slx",
+  "scope": "root",
+  "layout_mode": "incremental",
+  "operations": [
+    {"op": "connect", "target": "blk_4.y1 -> blk_16.u1"},
+    {"op": "connect", "target": "blk_5.y1 -> blk_16.u2"},
+    {"op": "connect", "target": "blk_6.y1 -> blk_16.u3"},
+    {"op": "connect", "target": "blk_7.y1 -> blk_16.u4"},
+    {"op": "connect", "target": "blk_8.y1 -> blk_16.u5"},
+    {"op": "connect", "target": "blk_9.y1 -> blk_16.u6"},
+    {"op": "connect", "target": "blk_10.y1 -> blk_16.u7"},
+    {"op": "connect", "target": "blk_11.y1 -> blk_16.u8"},
+    {"op": "connect", "target": "blk_16.y1 -> blk_12.u1"},
+    {"op": "connect", "target": "blk_16.y2 -> blk_13.u1"},
+    {"op": "connect", "target": "blk_16.y3 -> blk_14.u1"},
+    {"op": "connect", "target": "blk_16.y4 -> blk_15.u1"}
+  ]
+}

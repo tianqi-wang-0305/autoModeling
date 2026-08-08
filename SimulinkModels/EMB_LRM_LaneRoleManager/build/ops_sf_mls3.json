@@ -1,0 +1,16 @@
+{
+  "model": "EMB_LRM_LaneRoleManager.slx",
+  "scope": "sf_105",
+  "layout_mode": "incremental",
+  "operations": [
+    {"op": "connect", "target": "sf_105:14 -> sf_105:15", "params": {"LabelString": "[bMonitoringActive]"}, "ref": "t1"},
+    {"op": "connect", "target": "sf_105:15 -> sf_105:10", "params": {"LabelString": "[bHlthOk]", "ExecutionOrder": 1}, "ref": "t2"},
+    {"op": "connect", "target": "sf_105:15 -> sf_105:12", "params": {"LabelString": "[bFailedCond]", "ExecutionOrder": 2}, "ref": "t3"},
+    {"op": "connect", "target": "sf_105:15 -> sf_105:11", "params": {"LabelString": "[bHbLostCond]", "ExecutionOrder": 3}, "ref": "t4"},
+    {"op": "connect", "target": "sf_105:10 -> sf_105:12", "params": {"LabelString": "[bFailedCond]", "ExecutionOrder": 1}, "ref": "t5"},
+    {"op": "connect", "target": "sf_105:10 -> sf_105:11", "params": {"LabelString": "[bHbLostCond]", "ExecutionOrder": 2}, "ref": "t6"},
+    {"op": "connect", "target": "sf_105:11 -> sf_105:10", "params": {"LabelString": "[bHbOk]"}, "ref": "t7"},
+    {"op": "connect", "target": "sf_105:12 -> sf_105:10", "params": {"LabelString": "[bHbOk]", "ExecutionOrder": 1}, "ref": "t8"},
+    {"op": "connect", "target": "sf_105:12 -> sf_105:11", "params": {"LabelString": "[bIlcFull]", "ExecutionOrder": 2}, "ref": "t9"}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "model": "EMB_LRM_LaneRoleManager.slx",
+  "scope": "sf_105:9",
+  "layout_mode": "full",
+  "operations": [
+    {"op": "add_block", "type": "State", "ref": "moff", "params": {"LabelString": "MonitoringOff\nen: u8LaneStatus = uint8(0);\nen: bMonActive = false;"}},
+    {"op": "add_block", "type": "State", "ref": "mon", "params": {"LabelString": "MonitoringOn\nen: u8LaneStatus = uint8(0);\nen: bMonActive = true;"}},
+    {"op": "connect", "target": "? -> #moff"}
+  ]
+}

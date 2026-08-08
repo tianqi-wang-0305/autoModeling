@@ -1,0 +1,236 @@
+{
+ "model": "EMB_LRM_LaneRoleManager_v2.slx",
+ "scope": "blk_13",
+ "layout_mode": "full",
+ "operations": [
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8OperMode",
+   "ref": "mi1"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8LclLaneOperMode",
+   "ref": "mi2"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8RmtLaneRole",
+   "ref": "mi3"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8LclFitnessScore",
+   "ref": "mi4"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8RmtFitnessScore",
+   "ref": "mi5"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8LclIlcStatus",
+   "ref": "mi6"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "bLclIlcStatusQf",
+   "ref": "mi7"
+  },
+  {
+   "op": "add_block",
+   "type": "Inport",
+   "name": "u8HeartbeatLostCount",
+   "ref": "mi8"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "bLaneSwtgInProgs",
+   "ref": "mo1"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "bActvCtrlr",
+   "ref": "mo2"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8RmtLaneSts",
+   "ref": "mo3"
+  },
+  {
+   "op": "add_block",
+   "type": "Outport",
+   "name": "u8LaneRole",
+   "ref": "mo4"
+  },
+  {
+   "op": "add_block",
+   "type": "SubSystem",
+   "name": "SignalAcquisition",
+   "ref": "sa"
+  },
+  {
+   "op": "add_block",
+   "type": "SubSystem",
+   "name": "LRM_MLS_ManageLaneStatus",
+   "ref": "mls"
+  },
+  {
+   "op": "add_block",
+   "type": "SubSystem",
+   "name": "LRM_MLR_ManageLaneRole",
+   "ref": "mlr"
+  },
+  {
+   "op": "add_block",
+   "type": "SubSystem",
+   "name": "LRM_LSP_LaneSwitchInProgs",
+   "ref": "lsp"
+  },
+  {
+   "op": "add_block",
+   "type": "SubSystem",
+   "name": "OutputArbitration",
+   "ref": "oa"
+  },
+  {
+   "op": "configure",
+   "target": "#mi1",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "系统运行模式；类型 uint8；单位 -；范围 0..5"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mi2",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "本控制链路运行模式；类型 uint8；单位 -；范围 0..5"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mi3",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "远控制链路当前角色；类型 uint8；单位 -；范围 0..6"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mi4",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "本控制链路健康度得分；类型 uint8；单位 -；范围 0..255 (62=禁用,255=无效)"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mi5",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "远控制链路健康度得分；类型 uint8；单位 -；范围 0..255 (62=禁用,255=无效)"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mi6",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "本控制链路 ILC 状态；类型 uint8；单位 -；范围 0..2 (0=Failed,1=Normal,2=Initialized)"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mi7",
+   "params": {
+    "OutDataTypeStr": "boolean",
+    "Description": "本控制链路 ILC 状态信号质量；类型 boolean；单位 -；范围 0..1 (1=质量异常,0=质量正常)"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mi8",
+   "params": {
+    "OutDataTypeStr": "uint8",
+    "Description": "心跳丢失计数；类型 uint8；单位 -；范围 0..255"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mo1",
+   "params": {
+    "Description": "控制链路切换进行中标志；类型 boolean；单位 -；范围 0..1"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mo2",
+   "params": {
+    "Description": "活动控制器实例标志；类型 boolean；单位 -；范围 0..1"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mo3",
+   "params": {
+    "Description": "远控制链路状态；类型 uint8；单位 -；范围 0..3"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mo4",
+   "params": {
+    "Description": "本控制链路角色状态；类型 uint8；单位 -；范围 0..6"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#sa",
+   "params": {
+    "Description": "信号调理与类型转换：全部顶层输入已采用内部一致表示（enum 用 uint8，质量标志用 boolean），无需类型转换，直通至下游；8 路输入与 8 路输出同名同类型一一对应，由同名 Inport/Outport 直连实现"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mls",
+   "params": {
+    "Description": "监控 LCL ILC STATUS_QF、OPER MODE 与 LCL ILC STATUS，结合心跳丢失判定输出控制链路健康状态 LaneStatus、状态切换标志与三个诊断计数器；内部含 MLS_HB_Failure（Unit Delay/Sum/Relational/Logic 组合）与 MLS_STM_StateMachine（boolean-gated Stateflow，状态 INIT.MonitoringOff/On、Operating、HbLost、Failed，优先级 Operating>Failed>HbLost；计数器与条件全部在 Simulink 内计算，图表仅接收 boolean 条件，输出 u8LaneStatus 与 bMonitoringActive）"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#mlr",
+   "params": {
+    "Description": "基于本/远控制链路健康度得分、ILC 状态、远控角色、LaneStatus 与运行模式仲裁本控制链路角色（INIT/DISABLED/SHUTTING_DOWN/SUPPORT/FALLBACK/MASTER）；内部含 MLR_STM（boolean-gated Stateflow，状态 Init/Disabled/ShuttingDown/OperationalRoles{Support,Fallback,Master}）与 Simulink 计数器（InitWaitTime/MasterFallbackSwap/FallbackMasterTakeover/FallbackSupportSwap/SupportMasterTakeover），条件全部在 Simulink 内计算为 boolean，图表仅输出 u8LaneRole"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#lsp",
+   "params": {
+    "Description": "检测角色（LaneRole）变化并管理角色切换过渡过程（防抖），输出切换进行中标志与计数器；优先级 A>B>C：A=LaneRoleChanged 时 cntr=1,flag=1；B=cntr>0 时 cntr+1 并在超阈值后清零；C=IfAnyTimerNonZero 时 cntr=0,flag=1；由 Unit Delay / Sum / Switch 优先级链 / Relational Operator / Logical Operator 实现"
+   }
+  },
+  {
+   "op": "configure",
+   "target": "#oa",
+   "params": {
+    "Description": "输出仲裁与派生诊断：bActvCtrlr=(u8LaneRole==2)（Relational Operator）；u8RmtLaneSts 由 Switch 优先级链映射（DISABLED/SHUTTING_DOWN→FAILED、FITNESS==255→HB_LOST、UNKNOWN/INIT→INITIALISING、其余→OPERATING）；bLaneSwtgInProgs 与 u8LaneRole 直通"
+   }
+  }
+ ]
+}
