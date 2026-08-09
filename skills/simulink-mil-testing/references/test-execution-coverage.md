@@ -29,7 +29,7 @@ vnv.internal.agentic.test_edit(TestFile=fullfile(wf,"MIL_<Model>.mldatx"), ...
 
 - **产物必须是 `.mldatx`**：工具链生成的文件就是 Test Manager 原生格式，可在界面（`sltest.testmanager.open`）或命令行（`tf.run()`）中直接运行。
 - **scope 选择**：`TestScope="model"` 直接跑整个模型（无 harness）；`TestScope="unit"` 由工具链自动创建子系统 harness——若该版本工具包在 unit scope 报内部错误，回退 model scope（仍属本工具链，不手工建 harness）。
-- **禁止**用手工 `sltest.harness.create` 或直接 sltest API 编写/替换用例，除非用户明确要求做对比实验。
+- **禁止**用手工 `sltest.harness.create` 或直接 sltest API 编写/替换用例，除非用户明确要求做对比实验。**唯一例外：被测模型顶层存在 function-call 输入端口（外部调度）时，允许先手工创建带 `SchedulerBlock` 的模型级测试 harness 作为被测对象，再走工具链生成用例**（见 2.7）。
 - **可运行性校验（交付前必须做）**：`test_run` 执行整份 `.mldatx`，确认每个用例 outcome 为 passed，且覆盖报告可读取。
 - **常见失败原因**：模型未保存/标定量变量缺失、StopTime=inf 未覆盖、输入 .mat/.xlsx 与端口映射不符（典型表现为 `MappingStatus=输入未映射`，用例以零输入运行，覆盖度虚低且各用例数字相同）、baseline 文件路径被移动。
 
@@ -58,6 +58,34 @@ vnv.internal.agentic.test_edit(TestFile=fullfile(wf,"MIL_<Model>.mldatx"), ...
   % 重新打开新文件抽查 MappingStatus 后，再捕获 baseline / test_run；
   % 需保持原文件名时，另存后替换原文件（保留备份）。
   ```
+
+## 2.7 顶层 function-call 外部调度（AUTOSAR runnable 场景）
+
+**识别**：`model_overview` 显示模型顶层有 function-call 输入端口（触发口），runnable 子系统由外部调度器/RTE 触发；model-scope 裸跑时没有任何东西发 function-call，runnable 一次都不执行 → 执行覆盖 0%，decision/condition/MCDC 加多少用例都不涨。
+
+**处理**（唯一允许手工建 harness 的场景）：
+
+```matlab
+mdl = "MyModel";
+sltest.harness.create(mdl, Name="MyModel_MIL_Harness", ...
+    Source="Inport", Sink="Outport", SchedulerBlock="Test Sequence");
+% 若模型还有 Init/Reset/Terminate 类 function-call 端口：
+%   sltest.harness.create(..., SchedulerBlock="Test Sequence", ScheduleInitTermReset=true)
+```
+
+- harness 自动把模型**数据**输入端口生成 Inport；**function-call 端口不生成 Inport**，而是接在 SchedulerBlock（Test Sequence / MATLAB Function / Chart）输出上；
+- 在调度块里按 runnable 真实触发周期配置 function-call（如每 0.01s 调一次）；周期要与真实调度一致，状态机/防抖/计数逻辑需留足调用次数（N+1 次）；
+- 先单独仿真 harness，确认 runnable 执行覆盖 > 0%，再继续；
+- 以 harness 为被测对象走工具链：
+  ```matlab
+  vnv.internal.agentic.test_create(Component="MyModel_MIL_Harness", ...
+      TestType="baseline", TestScope="model", TestFile=fullfile(wf,"MIL_MyModel.mldatx"), ...
+      SuiteName="MIL_MyModel", TestName="TC_001");
+  ```
+  之后流程不变：`test_edit` 挂 .mat → `map()` → 另存新文件 → 重录 baseline → `test_run`。
+- `.mat` 只含**数据**输入端口信号（名称/类型与 harness 的 Inport 即模型数据端口一致）；function-call 端口不进 .mat。
+
+**诊断**：覆盖报告中 runnable 子系统“执行”列 0%（模块 0/0 执行）→ function-call 未触发，检查 SchedulerBlock 是否连接、周期是否发出；若执行 100% 但条件/MCDC 低 → 才是输入场景设计问题。
 
 ## 3. 覆盖率设置（decision / condition / MCDC）
 

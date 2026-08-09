@@ -31,6 +31,7 @@ description: "Generate and execute MIL (Model-in-the-Loop) test cases for Simuli
    - **只用 `testing-simulink-models` 工具链**：`test_create`（model scope；unit scope 自动建 harness 亦可，若工具报内部错误则回退 model scope）→ `test_edit`（StopTime 有限值、挂接输入）→ 捕获 baseline → `test_run` 在 Test Manager 中执行并读取覆盖率；
    - 每个用例同时生成 **`.mat` 与 Excel（.xlsx）输入文件**（同一组信号），Excel 便于用户手动变更优化；`.mat` 必须包含**模型全部顶层输入端口**的信号（元素名/类型与端口严格一致，如 `f32CoolantTemp`→single、`u16VehicleSpeed`→uint16、`bIgnOn`→logical）；
    - **输入映射（执行前必做）**：`test_edit` 设置 `InputFile` 后**不会自动映射**——必须对每个 `TestInput` 显式调用 `map()`，且映射必须**另存为新文件**才持久化（`saveToFile()` 无参不写盘、原路径报“文件已打开”、`close()` 丢映射）；重新打开校验 `MappingStatus` 含“成功映射”后再捕获 baseline / `test_run`。未映射时用例以零输入运行，覆盖度严重虚低（典型症状：decision 50%、condition 50%、MCDC 0%，且所有用例覆盖数字完全相同）；
+   - **顶层 function-call 外部调度**：若模型顶层存在 function-call 输入端口（外部调度触发，如 AUTOSAR runnable），先用 `sltest.harness.create` 创建带 `SchedulerBlock`（Test Sequence / MATLAB Function / Chart）的模型级测试 harness 驱动该端口（有 Init/Reset/Terminate 端口时加 `ScheduleInitTermReset=true`），再以 harness 作为被测对象走工具链生成用例；function-call 端口不是数据输入，**不进 .mat**；先单独仿真 harness 确认 runnable 已执行（执行覆盖 > 0%）再跑用例；
    - 覆盖由工具自动启用（metrics `dmc` = decision/mcdc/condition）；若未启用则显式开启。
 
 5. **覆盖分析与补测**
@@ -44,7 +45,7 @@ description: "Generate and execute MIL (Model-in-the-Loop) test cases for Simuli
 ## 关键约束
 
 - **不修改被测模型结构**：激励/观测用测试输入文件或 `SimulationInput`（`setExternalInput` / `SaveOutput`），禁止用 `set_param`/`add_block` 改模型来“刷覆盖率”；
-- **只允许用 `testing-simulink-models` 工具链生成测试用例**（`test_create` / `test_edit` / `test_run`），产物必须是 `.mldatx` 并能在 Test Manager 中直接运行；**禁止**用手工 `sltest.harness.create`、直接 sltest API 或脚本拼装用例来替代（用户明确要求对比实验时除外）。若工具链使用 unit scope 自动建 harness，需验证其可编译且可在 Test Manager 中运行；工具内部错误时回退 model scope（仍属该工具链）。
+- **只允许用 `testing-simulink-models` 工具链生成测试用例**（`test_create` / `test_edit` / `test_run`），产物必须是 `.mldatx` 并能在 Test Manager 中直接运行；**禁止**用手工 `sltest.harness.create`、直接 sltest API 或脚本拼装用例来替代（用户明确要求对比实验时除外）。**唯一例外：被测模型顶层存在 function-call 输入端口（外部调度）时，允许先手工创建带 `SchedulerBlock` 的模型级测试 harness 作为被测对象，再走工具链生成用例**。若工具链使用 unit scope 自动建 harness，需验证其可编译且可在 Test Manager 中运行；工具内部错误时回退 model scope（仍属该工具链）。
 - **每个用例必须同时提供 `.mat` 与 Excel 输入文件**：Excel 列 = 时间 + 各输入信号（同名同类型），方便用户手动修改输入、重录 baseline 后复用。
 - **.mat 输入完整性**：`.mat` 必须包含模型**全部顶层输入端口**的信号，元素名与类型和端口严格一致；执行前必须校验输入映射状态（`getInputs()` 的 `MappingStatus` 含“成功映射”），未映射时先 `map()` 并另存持久化，否则用例实际以零输入运行、覆盖结果严重失真（典型症状：decision 50%、condition 50%、MCDC 0%，且所有用例覆盖数字完全相同）。
 - **覆盖达标要求**：decision = 100%、condition = 100%、MCDC ≥ 80%（目标 100%）；未达标必须补测，禁止修改被测模型结构来“刷覆盖率”。
