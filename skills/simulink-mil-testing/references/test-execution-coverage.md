@@ -87,6 +87,45 @@ sltest.harness.create(mdl, Name="MyModel_MIL_Harness", ...
 
 **诊断**：覆盖报告中 runnable 子系统“执行”列 0%（模块 0/0 执行）→ function-call 未触发，检查 SchedulerBlock 是否连接、周期是否发出；若执行 100% 但条件/MCDC 低 → 才是输入场景设计问题。
 
+## 2.8 SIL 测试与 MIL/SIL back-to-back 对比
+
+**前置**：`ver` 确认已安装 **Simulink Coder / Embedded Coder** 并配置好 C 编译器（`mex -setup C`）；模型可生成代码（无不受支持的块）；MIL 用例先完成且覆盖达标。SIL 首次运行会编译生成代码，明显比 MIL 慢，属正常现象。
+
+**方式 A（推荐，back-to-back 等价用例）**：一个用例跑两个仿真并自动对比。
+
+```matlab
+vnv.internal.agentic.test_create(Component="MyModel", TestType="equivalence", ...
+    TestScope="model", TestFile=fullfile(wf,"MIL_SIL_MyModel.mldatx"), ...
+    SuiteName="BackToBack", TestName="TC_001");
+% 等价用例展开为两个仿真：仿真1 = Normal（MIL），仿真2 = SIL；
+% 两个仿真的模式在 Test Manager UI 的 Simulation 1/2 中分别配置；
+% API 侧对活动仿真：tc.setProperty("SimulationMode", "Software-in-the-loop (SIL)")
+%   （已验证该值可设置并读回），等价用例可用 copySimulationSettings 复用仿真1的设置。
+% 同一输入/StopTime：test_edit 的 InputFile/StopTime 应用到用例（两个仿真共用）。
+```
+
+配置后先用 `test_read` 确认两个仿真的模式分别是 Normal 与 SIL、输入一致，再 `test_run`。
+
+**方式 B（复用 MIL baseline 当判据）**：MIL 阶段已捕获 baseline 的用例，直接切 SIL 跑；SIL 输出与 MIL baseline 不一致即失败，天然就是一致性校验。
+
+```matlab
+vnv.internal.agentic.test_edit(TestFile=fullfile(wf,"MIL_MyModel.mldatx"), ...
+    SuiteName="MIL_MyModel", TestCaseName="TC_001", ...
+    SimulationMode="Software-in-the-loop (SIL)");
+% baseline 保持 MIL 阶段捕获的不变 → test_run；
+% 全部 passed = MIL/SIL 一致；failed = 差异超出容差。
+```
+
+**容差设置**：浮点模型默认容差常过严，按精度需求设置 baseline/等价判据容差（绝对/相对，如相对 1e-6~1e-3，或按量化步长 1 LSB）；用 TestCase 的 baseline criteria / equivalence criteria 配置（UI 或 `getEquivalenceCriteria` / `captureEquivalenceCriteria` / `captureBaselineCriteria`）。
+
+**判定与排查**：
+- passed = MIL/SIL 一致；failed 先取最大偏差，落在容差内则放宽容差，整体偏移/相位差则查代码生成与采样配置；
+- 禁止为了“对平”修改被测模型或生成代码设置；SIL 一致性是验证实现与模型等价，不是把结果改成一样。
+
+**覆盖**：SIL 下可继续采集 decision/condition/MCDC（可选）；一致性以 baseline/等价判据为准，不用覆盖率代替一致性结论。
+
+**function-call 顶层场景**：harness 建好后（见 2.7），同一 harness 用例切 `SimulationMode="Software-in-the-loop (SIL)"`，或创建 harness 时 `sltest.harness.create(..., VerificationMode="SIL")`，再做 back-to-back。
+
 ## 3. 覆盖率设置（decision / condition / MCDC）
 
 - 工具链 `test_create` 自动启用覆盖（`dmc`）；如未启用，在 TestFile 上显式设置：

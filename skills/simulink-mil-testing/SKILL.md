@@ -1,6 +1,6 @@
 ---
 name: simulink-mil-testing
-description: "Generate and execute MIL (Model-in-the-Loop) test cases for Simulink models using ONLY the testing-simulink-models toolchain (vnv.internal.agentic.test_create / test_edit / test_run), producing .mldatx test files that run in Test Manager, with both .mat and Excel input files per case for manual editing. Coverage must reach decision 100%, condition 100%, and MCDC at least 80% (target 100%). Use when the user asks to create or run MIL test cases for a Simulink model, generate tests from a requirements document (docx/md/spec JSON) or from the model itself when no requirements are given, or needs Simulink Coverage (decision/condition/MCDC) results."
+description: "Generate and execute MIL (Model-in-the-Loop) test cases for Simulink models using ONLY the testing-simulink-models toolchain (vnv.internal.agentic.test_create / test_edit / test_run), producing .mldatx test files that run in Test Manager, with both .mat and Excel input files per case for manual editing. Coverage must reach decision 100%, condition 100%, and MCDC at least 80% (target 100%). Optionally run the same cases in SIL (Software-in-the-Loop) and perform MIL/SIL back-to-back equivalence comparison. Use when the user asks to create or run MIL test cases for a Simulink model, generate tests from a requirements document (docx/md/spec JSON) or from the model itself when no requirements are given, needs Simulink Coverage (decision/condition/MCDC) results, or asks for SIL testing / MIL-SIL comparison."
 ---
 
 # Simulink MIL Testing
@@ -38,8 +38,16 @@ description: "Generate and execute MIL (Model-in-the-Loop) test cases for Simuli
    - 对未覆盖项逐个定位（未覆盖的分支 / 条件 / MCDC 组合）→ 补充用例；MCDC 用真值表法：每个条件独立翻转、其余条件固定为“使结果随该条件变化”的组合；
    - **达标要求：decision = 100%，condition = 100%，MCDC ≥ 80%（目标 100%）**；不达标必须补测，不得通过修改模型来刷覆盖率。
 
-6. **输出**
+6. **SIL 测试与 MIL/SIL back-to-back 对比**（用户要求时必做；见 `references/test-execution-coverage.md` 第 2.8 节）
+   - 前置：确认已装 **Simulink Coder / Embedded Coder** 与可用 C 编译器；模型可生成代码；MIL 用例已完成且覆盖达标；
+   - **方式 A（推荐，back-to-back）**：`test_create(TestType="equivalence", ...)` 生成等价用例，仿真 1 = Normal（MIL）、仿真 2 = Software-in-the-loop（SIL），同一输入/StopTime，Test Manager 按等价容差自动对比两个仿真输出；
+   - **方式 B（复用 MIL baseline）**：MIL 用例捕获 baseline 后，用 `test_edit(SimulationMode="Software-in-the-loop (SIL)")` 把同一用例切到 SIL 直接跑，SIL 输出与 MIL baseline 不一致即失败；
+   - 判定：全部 passed = MIL/SIL 一致；failed 时列出不一致信号与最大偏差，先判断是否落在数值精度内（调容差），再排查代码生成/采样配置差异，禁止改模型或生成配置来“对平”结果；
+   - 顶层 function-call 场景：在已建 harness 上同样切 SIL（`SimulationMode` 或 harness `VerificationMode="SIL"`）。
+
+7. **输出**
    - 用例清单（需求映射、输入、期望、覆盖意图）、执行结果（通过/失败）、覆盖率汇总（decision/condition/MCDC 百分比 + 未覆盖项列表）；
+   - 若做了 SIL：MIL/SIL back-to-back 对比结论（一致/不一致、容差、最大偏差、不一致信号列表）；
    - 用例失败时给出根因判断（模型缺陷 vs 用例设计问题）。
 
 ## 关键约束
@@ -49,6 +57,7 @@ description: "Generate and execute MIL (Model-in-the-Loop) test cases for Simuli
 - **每个用例必须同时提供 `.mat` 与 Excel 输入文件**：Excel 列 = 时间 + 各输入信号（同名同类型），方便用户手动修改输入、重录 baseline 后复用。
 - **.mat 输入完整性**：`.mat` 必须包含模型**全部顶层输入端口**的信号，元素名与类型和端口严格一致；执行前必须校验输入映射状态（`getInputs()` 的 `MappingStatus` 含“成功映射”），未映射时先 `map()` 并另存持久化，否则用例实际以零输入运行、覆盖结果严重失真（典型症状：decision 50%、condition 50%、MCDC 0%，且所有用例覆盖数字完全相同）。
 - **覆盖达标要求**：decision = 100%、condition = 100%、MCDC ≥ 80%（目标 100%）；未达标必须补测，禁止修改被测模型结构来“刷覆盖率”。
+- **MIL/SIL 一致性判定**：back-to-back 以等价容差为准；SIL 与 MIL 不一致时先排查容差/浮点精度/代码生成与采样配置，禁止为对平结果修改被测模型或生成代码设置。
 - 覆盖率以 Simulink Coverage 报告为准（decision / condition / MCDC），以整份 `.mldatx` 聚合口径评估。
 - 相关 Toolkit 技能：`testing-simulink-models`（生成/执行/覆盖）、`simulating-simulink-models`（sim）、`authoring-simulink-inputs`（createInputDataset 合成波形）、`checking-model-compliance`（规范预检）。
 
